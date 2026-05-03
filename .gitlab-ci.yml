@@ -2,7 +2,7 @@
 
 stages:
   - test
-  - report
+  - deploy
 
 # Main test job
 playwright-tests:
@@ -19,20 +19,19 @@ playwright-tests:
       - test-results/
     expire_in: 30 days
 
-# Allure report generation job
-generate-allure:
-  stage: report
+# GitLab Pages hosting (Name must be 'pages')
+pages:
+  stage: deploy
   image: node:18
   dependencies:
     - playwright-tests
   script:
-    # Install Java (Required for Allure)
     - apt-get update && apt-get install -y default-jre
     - npm install -g allure-commandline
     - npm run allure:generate
+    - mv allure-report public
   artifacts:
-    when: always
     paths:
-      - allure-report/
+      - public
     expire_in: 30 days
   allow_failure: true
