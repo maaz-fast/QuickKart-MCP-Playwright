@@ -2,7 +2,7 @@
 
 **Project:** QuickKart E-Commerce Platform  
 **Version:** 1.0  
-**Prepared By:** QA Team  
+**Prepared By:** Maaz Imtiaz (SQA Engineer)  
 **Date:** May 2026  
 **Base URL:** https://quickkart-shop-nine.vercel.app
 

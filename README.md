@@ -2,6 +2,7 @@
 
 ![Playwright](https://img.shields.io/badge/Playwright-282120?style=for-the-badge&logo=playwright&logoColor=45ba4b)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![GitLab CI](https://img.shields.io/badge/GitLab_CI-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)
 ![Allure](https://img.shields.io/badge/Allure_Report-FFC107?style=for-the-badge&logo=allure&logoColor=black)
 
 Welcome to the **QuickKart Automation Framework**! This project is a complete, professional testing suite built to ensure the **QuickKart E-Commerce App** works perfectly every time. 🚀
@@ -23,6 +24,7 @@ We use **Playwright** and **JavaScript** to simulate real users—browsing produ
 - **Engine**: [Playwright](https://playwright.dev/) (Industry standard for web testing)
 - **Language**: JavaScript
 - **Reporting**: Allure Report & Playwright HTML Report
+- **CI/CD**: GitLab Pipelines (Automated testing on every push)
 - **Architecture**: Page Object Model (POM)
 
 ---
@@ -89,6 +91,25 @@ Our suite covers every critical part of the shopping experience:
 - **Flakiness Fixed**: We've added smart waits to handle React's asynchronous nature.
 - **Test Data**: Check `Data/db.json` to see the information used during tests.
 - **Browser Choice**: Tests run on Chromium (Chrome) by default but are ready for Firefox and Safari.
+
+---
+
+## ☁️ CI/CD & Cloud Automation
+
+This framework is fully integrated with **GitLab CI/CD** for continuous testing.
+
+### **1. Automated Pipeline**
+Every time code is pushed, a multi-stage pipeline is triggered:
+- **Test Stage**: Runs the full suite of 60 tests in a Playwright Docker container.
+- **Report Stage**: Generates a professional Allure Dashboard and saves it as an artifact.
+
+### **2. The "Double Push" Workflow**
+We have configured a specialized git setup that keeps your **GitHub** and **GitLab** in perfect sync.
+- **Command**: `git push origin main`
+- **Result**: Code is sent to GitHub (Backup) and GitLab (Automation) simultaneously.
+
+### **3. Cloud Reporting**
+You can view the latest test results directly in GitLab under **Build > Pipelines**. Download the `allure-report` artifact to see the interactive dashboard from any cloud run.
 
 ---
 *Created with ❤️ for high-quality software testing.*
