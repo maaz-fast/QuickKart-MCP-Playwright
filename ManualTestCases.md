@@ -22,6 +22,8 @@
 10. [Orders Page Tests](#10-orders-page-tests)
 11. [Wishlist Tests](#11-wishlist-tests)
 12. [Navigation Tests](#12-navigation-tests-account-level)
+13. [Admin Panel Tests](#13-admin-panel-tests)
+14. [Contact Page Tests](#14-contact-page-tests)
 
 ---
 
@@ -182,6 +184,59 @@
 
 ---
 
+## 13. Admin Panel Tests
+
+**Prerequisites:** User is logged in as an Administrator (maaz+admin@gmail.com).
+
+### 13.1 Dashboard and Navigation Tests
+| TC ID | Test Case Title | Preconditions | Test Steps | Expected Result |
+|---|---|---|---|---|
+| TC-ADM-001 | Dashboard displays key stats | Admin on Dashboard | 1. Observe "Total Orders", "Total Users", "Active Support" cards | Stats are visible and values are >= 0. |
+| TC-ADM-002 | Sidebar navigation works | Admin on Dashboard | 1. Click each link in the sidebar (Categories, Orders, Users, etc.) | Correct URL is loaded for each module. |
+| TC-ADM-003 | Notifications screen is accessible | Admin on Dashboard | 1. Click Notifications icon 2. Click "View All" | Navigates to /notifications. List of alerts visible. |
+| TC-ADM-004 | Admin profile is read-only | Admin on Profile | 1. Go to /admin/profile 2. Attempt to edit Email | Email field is disabled and cannot be edited. |
+
+### 13.2 Products Management (CRUD)
+| TC ID | Test Case Title | Preconditions | Test Steps | Expected Result |
+|---|---|---|---|---|
+| TC-ADM-005 | Admin can add a new product | Admin on Products page | 1. Click "+ Add Product" 2. Fill Name, Desc, Price, Stock 3. Select Category 4. Fill Image URL 5. Click Create | Success toast visible. Redirected to product list. |
+| TC-ADM-006 | Admin can search for a product | Admin on Products page | 1. Enter product name in search bar | Table filters to show only matching products. |
+| TC-ADM-007 | Admin can delete a product | Admin on Products page | 1. Click Delete on a product 2. Accept confirmation dialog | Success toast visible. Product removed from table. |
+
+### 13.3 Categories Management
+| TC ID | Test Case Title | Preconditions | Test Steps | Expected Result |
+|---|---|---|---|---|
+| TC-ADM-008 | Admin can create and delete category | Admin on Categories page | 1. Fill category name 2. Click Add 3. Verify in list 4. Click Delete | Category is added then successfully removed. |
+
+### 13.4 Orders and Users
+| TC ID | Test Case Title | Preconditions | Test Steps | Expected Result |
+|---|---|---|---|---|
+| TC-ADM-009 | Admin can update order status | Admin on Orders page | 1. Select new status from dropdown for an order | Status is updated. Success toast shown. |
+| TC-ADM-010 | Admin can filter orders by status | Admin on Orders page | 1. Select a status from the header filter | Table only shows orders with that status. |
+| TC-ADM-011 | Admin can view user directory | Admin on Users page | 1. Observe user table | Table shows Name, Email, and Role for all users. |
+
+### 13.5 Support and Logs
+| TC ID | Test Case Title | Preconditions | Test Steps | Expected Result |
+|---|---|---|---|---|
+| TC-ADM-012 | Admin can resolve support tickets | Admin on Support page | 1. Click Resolve on a pending ticket | Ticket status changes to Resolved. |
+| TC-ADM-013 | Admin can sync activity logs | Admin on Activity Logs | 1. Click "Sync Logs" | Success message shown. Table refreshes with latest logs. |
+| TC-ADM-014 | Admin can edit product price | Admin on Products | 1. Click Edit 2. Change price 3. Click Update | Success toast visible. Table reflects new price. |
+
+---
+
+## 14. Contact Page Tests
+
+**Prerequisites:** User is on the /contact page.
+
+| TC ID | Test Case Title | Preconditions | Test Steps | Expected Result |
+|---|---|---|---|---|
+| TC-CONT-001 | Successful form submission | Valid data entered | 1. Fill all fields 2. Click Send Message | "Message Received!" screen shown. |
+| TC-CONT-002 | Empty field validation | Fields are empty | 1. Click Send Message | 4 validation error messages shown. |
+| TC-CONT-003 | Invalid email validation | Invalid email format | 1. Enter invalid email 2. Click Send | "Enter a valid email address" shown. |
+| TC-CONT-004 | Verify support info | Page loaded | 1. Observe right sidebar | Email, Phone, and Address are correct. |
+
+---
+
 ## Test Execution Summary
 
 | Suite | Total TCs | Positive | Negative |
@@ -198,7 +253,9 @@
 | Orders | 5 | 5 | 0 |
 | Wishlist | 6 | 6 | 0 |
 | Navigation (Account) | 4 | 4 | 0 |
-| **TOTAL** | **65** | **60** | **5** |
+| Admin Panel | 14 | 14 | 0 |
+| Contact Page | 4 | 3 | 1 |
+| **TOTAL** | **83** | **77** | **6** |
 
 ---
 

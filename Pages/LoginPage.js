@@ -68,7 +68,8 @@ export class LoginPage extends BasePage {
     await this.clickLoginButton();
     
     // Wait for navigation to home page
-    await this.page.waitForURL('**/', { waitUntil: 'networkidle' });
+    // Wait for navigation to home page or admin dashboard
+    await this.page.waitForURL(url => url.href.includes('/admin/dashboard') || url.pathname === '/', { waitUntil: 'networkidle' });
     console.log('[LOGIN PAGE] Login completed');
   }
 

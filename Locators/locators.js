@@ -185,24 +185,31 @@ export const locators = {
       fallback: 'h1'
     },
     fullNameInput: {
-      primary: 'input[placeholder="Your name"]',
-      fallback: 'input >> nth=0'
+      primary: 'input#name',
+      fallback: 'input[placeholder="Your name"]'
     },
     emailInput: {
-      primary: 'input[placeholder="Your email"]',
-      fallback: 'input >> nth=1'
+      primary: 'input#email',
+      fallback: 'input[placeholder="Your email"]'
     },
     subjectInput: {
-      primary: 'input[placeholder="What can we help with?"]',
-      fallback: 'input >> nth=2'
+      primary: 'input#subject',
+      fallback: 'input[placeholder="What can we help with?"]'
     },
     messageTextarea: {
-      primary: 'textarea[placeholder="Write your message here..."]',
-      fallback: 'textarea >> nth=0'
+      primary: 'textarea#message',
+      fallback: 'textarea[placeholder="Write your message here..."]'
     },
     sendMessageButton: {
-      primary: 'button:has-text("Send Message")',
+      primary: 'button.btn-primary:has-text("Send Message")',
       fallback: 'button >> nth=1'
+    },
+    errorMessages: {
+      name: 'text="Full name is required"',
+      email: 'text="Email is required"',
+      invalidEmail: 'text="Enter a valid email address"',
+      subject: 'text="Subject is required"',
+      message: 'text="Message cannot be empty"'
     }
   },
 
