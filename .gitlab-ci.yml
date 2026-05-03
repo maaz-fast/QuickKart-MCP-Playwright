@@ -1,35 +1,13 @@
-# .gitlab-ci.yml for QuickKart Playwright Automation
-
+# Ultra Simple Test
 stages:
   - test
-  - report
 
-# Main test job
-playwright-tests:
+run-tests:
   stage: test
   image: mcr.microsoft.com/playwright:v1.40.0-jammy
   script:
     - npm install
     - npx playwright test
   artifacts:
-    when: always
     paths:
       - playwright-report/
-      - allure-results/
-      - test-results/
-    expire_in: 30 days
-
-# Allure report generation job
-generate-allure:
-  stage: report
-  image: node:18
-  dependencies:
-    - playwright-tests
-  script:
-    - npm install -g allure-commandline
-    - npm run allure:generate
-  artifacts:
-    when: always
-    paths:
-      - allure-report/
-    expire_in: 30 days
