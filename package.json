@@ -1,0 +1,32 @@
+{
+  "name": "quickkart-automation",
+  "version": "1.0.0",
+  "description": "Complete Playwright automation framework for QuickKart application",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "mcp:start": "mcp server",
+    "mcp:test": "playwright test --reporter=allure-playwright",
+    "report": "playwright show-report",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing",
+    "quickkart"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "allure-playwright": "^2.10.0",
+    "allure-commandline": "^2.25.0"
+  },
+  "dependencies": {}
+}

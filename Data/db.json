@@ -1,0 +1,57 @@
+{
+  "users": {
+    "validUser": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "password": "Test@1234"
+    },
+    "anotherUser": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "password": "Secure@5678"
+    }
+  },
+  "invalidUsers": {
+    "noEmail": {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "email": "",
+      "password": "Test@1234"
+    },
+    "invalidEmail": {
+      "firstName": "Alice",
+      "lastName": "Brown",
+      "email": "notanemail",
+      "password": "Test@1234"
+    },
+    "shortPassword": {
+      "firstName": "Charlie",
+      "lastName": "Wilson",
+      "email": "charlie@example.com",
+      "password": "123"
+    }
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 100
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 200
+    }
+  ],
+  "checkout": {
+    "address": "123 Main Street",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "cardNumber": "4111111111111111",
+    "expiryDate": "12/30",
+    "cvv": "123"
+  }
+}

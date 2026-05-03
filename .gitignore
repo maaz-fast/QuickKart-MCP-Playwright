@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.local
+test-results/
+playwright-report/
+allure-results/
+allure-report/
+.DS_Store
+.idea/
+*.log
+dist/
+build/
