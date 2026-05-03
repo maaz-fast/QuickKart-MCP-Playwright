@@ -1,4 +1,4 @@
-# .gitlab-ci.yml for QuickKart Playwright Automation (Hardened Version)
+# .gitlab-ci.yml for QuickKart Playwright Automation (Fixing Allure Java Error)
 
 stages:
   - test
@@ -10,8 +10,6 @@ playwright-tests:
   image: mcr.microsoft.com/playwright:v1.40.0-jammy
   script:
     - npm ci
-    # Ensure browsers are correctly linked in the CI environment
-    - npx playwright install --with-deps chromium
     - npx playwright test
   artifacts:
     when: always
@@ -28,6 +26,8 @@ generate-allure:
   dependencies:
     - playwright-tests
   script:
+    # Install Java (Required for Allure)
+    - apt-get update && apt-get install -y default-jre
     - npm install -g allure-commandline
     - npm run allure:generate
   artifacts:
