@@ -1,6 +1,8 @@
-export class AdminCategoriesPage {
+import BasePage from '../BasePage.js';
+
+export class AdminCategoriesPage extends BasePage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.nameInput = page.locator('input#categoryName');
         this.addBtn = page.locator('button:has-text("Add Category")');
         this.tableRows = page.locator('tbody tr');
@@ -8,19 +10,22 @@ export class AdminCategoriesPage {
 
     async goto() {
         await this.page.goto('/admin/categories');
+        await this.waitForLoadingToFinish();
     }
 
     async addCategory(name) {
-        await this.nameInput.fill(name);
-        await this.addBtn.click();
+        await this.fill(this.nameInput, name);
+        await this.click(this.addBtn);
+        await this.waitForLoadingToFinish();
     }
 
     async deleteCategory(name) {
         const row = this.tableRows.filter({ hasText: name });
-        await row.locator('button.btn-error').click();
+        await this.click(row.locator('button.btn-error'));
+        await this.waitForLoadingToFinish();
     }
 
     async getCategoryNames() {
-        return await this.tableRows.locator('td:first-child').allInnerTexts();
+        return await this.getAllText(this.tableRows.locator('td:first-child'));
     }
 }

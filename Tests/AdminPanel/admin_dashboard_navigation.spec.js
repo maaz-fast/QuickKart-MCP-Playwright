@@ -82,4 +82,20 @@ test.describe('Admin Dashboard & Navigation Tests', () => {
         const name = await profilePage.nameInput.inputValue();
         expect(name.length).toBeGreaterThan(0);
     });
+
+    // Test 5: Verifying profile picture upload
+    test('Should upload Admin Profile picture', async ({ page }) => {
+        const profilePage = new AdminProfilePage(page);
+        const path = require('path');
+        
+        await dashboardPage.header.profileBtn.click();
+        await expect(page).toHaveURL(/.*profile/);
+        
+        const filePath = path.resolve('Resources/Admin_Avatar.png');
+        await profilePage.uploadProfilePicture(filePath);
+        
+        // Verify toast message
+        await expect(page.locator('text=/Profile image updated!/i')).toBeVisible();
+        console.log('[TEST PASSED] Admin profile picture uploaded successfully');
+    });
 });

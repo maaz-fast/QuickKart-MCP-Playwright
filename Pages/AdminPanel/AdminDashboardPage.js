@@ -1,7 +1,9 @@
+import BasePage from '../BasePage.js';
+
 // AdminDashboardPage - This is the central hub for the administrator area
-export class AdminDashboardPage {
+export class AdminDashboardPage extends BasePage {
     constructor(page) {
-        this.page = page;
+        super(page);
         
         // --- Sidebar Navigation ---
         // We scope these to the 'aside' tag to ensure we don't click header links by mistake
@@ -12,23 +14,24 @@ export class AdminDashboardPage {
             orders: page.locator('aside a:has-text("Orders")'),
             users: page.locator('aside a:has-text("Users")'),
             support: page.locator('aside a:has-text("Support")'),
-            logs: page.locator('aside a:has-text("Activity Logs")')
+            activityLogs: page.locator('aside a:has-text("Activity Logs")')
         };
 
         // --- Top Header Actions ---
         this.header = {
             notificationsBtn: page.locator('button[data-testid="notification-icon"]'),
             viewAllNotifications: page.locator('a:has-text("View All Notifications")'),
-            profileBtn: page.locator('header a[href="/profile"]')
+            profileBtn: page.locator('nav a[href="/profile"]')
         };
 
         // --- Statistics Cards ---
         // These cards show the live "health" of the shop
+        // Target H2 tags which contain the actual values
         this.stats = {
-            revenue: page.locator('div:has-text("Total Revenue") + div p'),
-            orders: page.locator('div:has-text("Total Orders") + div p'),
-            products: page.locator('div:has-text("Total Products") + div p'),
-            users: page.locator('div:has-text("Total Users") + div p')
+            revenue: page.locator('div:has-text("Total Revenue") ~ h2'),
+            orders: page.locator('div:has-text("Total Orders") ~ h2'),
+            products: page.locator('div:has-text("Total Products") ~ h2'),
+            users: page.locator('div:has-text("Total Users") ~ h2')
         };
     }
 
@@ -47,7 +50,9 @@ export class AdminDashboardPage {
         if (this.sidebar[module]) {
             await this.sidebar[module].click();
         } else {
-            console.error(`Module ${module} not found in sidebar!`);
+            const errorMsg = `Module ${module} not found in sidebar! Available: ${Object.keys(this.sidebar).join(', ')}`;
+            console.error(errorMsg);
+            throw new Error(errorMsg);
         }
     }
 }

@@ -65,6 +65,28 @@ test.describe('Product Tests', () => {
     console.log(`[TEST PASSED] Category filtering (${targetCategory}) shows ${count} products`);
   });
 
+  test('Products: Should filter by price range', async ({ page }) => {
+    const homePage = new HomePage(page);
+    
+    await homePage.waitForProducts();
+    
+    console.log('[TEST] Filtering by price range: $10 - $100');
+    await homePage.filterByPriceRange(10, 100);
+    
+    // Verify results are within range
+    const productCards = page.locator('div[data-testid^="product-card-"]');
+    const count = await productCards.count();
+    
+    for (let i = 0; i < Math.min(count, 5); i++) {
+      const priceText = await productCards.nth(i).locator('div:has-text("$")').last().innerText();
+      const price = parseFloat(priceText.replace('$', ''));
+      expect(price).toBeGreaterThanOrEqual(10);
+      expect(price).toBeLessThanOrEqual(100);
+    }
+    
+    console.log(`[TEST PASSED] Price filtering works for ${count} products`);
+  });
+
   test('Products: Should view product details', async ({ page }) => {
     const homePage = new HomePage(page);
     const productPage = new ProductPage(page);

@@ -24,7 +24,7 @@ test.describe('Admin Orders Management', () => {
         await ordersPage.updateOrderStatus(orderId, 'Shipped');
         
         // Verify toast message
-        await expect(page.locator('text=Order status updated')).toBeVisible();
+        await expect(page.locator('text=/Order status updated/i')).toBeVisible();
     });
 
     test('Should filter orders by status', async ({ page }) => {

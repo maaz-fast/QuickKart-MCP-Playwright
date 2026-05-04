@@ -84,6 +84,19 @@ export class HomePage extends BasePage {
     await this.click(categoryButton);
   }
 
+  // Filter products by price range
+  async filterByPriceRange(min, max) {
+    console.log(`[HOME PAGE] Filtering by price: $${min} - $${max}`);
+    if (min !== null) {
+      await this.fill(this.locators.minPriceInput, min.toString());
+    }
+    if (max !== null) {
+      await this.fill(this.locators.maxPriceInput, max.toString());
+    }
+    // Wait for the filtered results
+    await this.waitForProducts();
+  }
+
   // Convenience method for filtering
   async filterByCategory(categoryName) {
     await this.selectCategory(categoryName);

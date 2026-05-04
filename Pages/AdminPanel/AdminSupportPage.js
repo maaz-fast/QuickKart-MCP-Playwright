@@ -1,21 +1,26 @@
-export class AdminSupportPage {
+import BasePage from '../BasePage.js';
+
+export class AdminSupportPage extends BasePage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.ticketRows = page.locator('tbody tr');
     }
 
     async goto() {
         await this.page.goto('/admin/support');
+        await this.waitForLoadingToFinish();
     }
 
     async resolveTicket(index = 0) {
         const row = this.ticketRows.nth(index);
-        await row.locator('button:has-text("Resolve")').click();
+        await this.click(row.locator('button:has-text("Resolve")'));
+        await this.waitForLoadingToFinish();
     }
 
     async filterByStatus(status) {
         // Click custom header filter
-        await this.page.locator('div:has-text("All Status")').first().click();
-        await this.page.locator(`div:text("${status}")`).last().click();
+        await this.click(this.page.locator('div:has-text("All Status")').first());
+        await this.click(this.page.locator(`div:text("${status}")`).last());
+        await this.waitForLoadingToFinish();
     }
 }

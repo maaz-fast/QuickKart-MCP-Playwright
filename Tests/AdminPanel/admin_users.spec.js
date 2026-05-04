@@ -25,9 +25,7 @@ test.describe('Admin User Directory', () => {
     });
 
     test('Should verify user directory table structure', async ({ page }) => {
-        const headers = await page.locator('thead th').allInnerTexts();
-        expect(headers).toContain('Name');
-        expect(headers).toContain('Email');
-        expect(headers).toContain('Role');
+        const headerLocator = page.locator('thead th');
+        await expect(headerLocator).toContainText(['Name', 'Email', 'Role']);
     });
 });

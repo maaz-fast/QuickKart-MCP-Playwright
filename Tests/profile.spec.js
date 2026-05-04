@@ -91,6 +91,21 @@ test.describe('Profile/Account Tests', () => {
     console.log('[TEST PASSED] Logout from profile page works');
   });
 
+  test('Profile: Should upload User Profile picture', async ({ page }) => {
+    // ARRANGE
+    const profilePage = new ProfilePage(page);
+    const path = require('path');
+    
+    // ACT
+    await profilePage.goto();
+    const filePath = path.resolve('Resources/User_Avatar.png');
+    await profilePage.uploadProfilePicture(filePath);
+    
+    // ASSERT
+    await expect(page.locator('text=/Profile image updated!/i')).toBeVisible();
+    console.log('[TEST PASSED] User profile picture uploaded successfully');
+  });
+
   // ===================== ORDERS PAGE TESTS =====================
 
   test('Orders: Page should load when accessed', async ({ page }) => {

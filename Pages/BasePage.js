@@ -36,16 +36,16 @@ export class BasePage {
    * Try primary locator, fallback to alternative if fails
    * This implements MCP healing strategy
    */
-  async tryLocator(primary, fallback) {
+  async tryLocator(primary, fallback, customTimeout = 10000) {
     console.log(`[HEALING] Attempting primary selector: ${primary}`);
     try {
-      await this.page.waitForSelector(primary, { timeout: 10000 });
+      await this.page.waitForSelector(primary, { timeout: customTimeout });
       return primary;
     } catch (error) {
       // Primary locator failed, try fallback
       console.log(`[HEALING] Primary selector failed, trying fallback: ${fallback}`);
       try {
-        await this.page.waitForSelector(fallback, { timeout: 10000 });
+        await this.page.waitForSelector(fallback, { timeout: customTimeout });
         return fallback;
       } catch (fallbackError) {
         console.error(`[HEALING FAILED] Both selectors failed. Primary: ${primary}, Fallback: ${fallback}`);
@@ -57,15 +57,22 @@ export class BasePage {
   // ===================== CLICK ACTIONS =====================
 
   /**
-   * Click an element using primary/fallback locators
+   * Click an element using primary/fallback locators or a Playwright locator
    * Retries on failure
    */
   async click(locator, options = {}) {
+    // If it's a Playwright locator object, use it directly
+    if (typeof locator === 'object' && locator.click && !locator.primary) {
+      console.log(`[CLICK] Using Playwright locator`);
+      await locator.click(options);
+      return;
+    }
+
     const selector = await this.getSelector(locator);
     
     for (let i = 0; i < this.retryAttempts; i++) {
       try {
-        console.log(`[CLICK] Clicking: ${selector}`);
+        console.log(`[CLICK] Clicking selector: ${selector}`);
         await this.page.click(selector, options);
         return;
       } catch (error) {
@@ -79,13 +86,13 @@ export class BasePage {
   /**
    * Safely get a selector with healing logic
    */
-  async getSelector(locator) {
+  async getSelector(locator, timeout) {
     if (typeof locator === 'string') {
       return locator; // Direct string selector
     }
     
     // Locator object with primary and fallback
-    return await this.tryLocator(locator.primary, locator.fallback);
+    return await this.tryLocator(locator.primary, locator.fallback, timeout);
   }
 
   // ===================== TEXT INPUT ACTIONS =====================
@@ -95,11 +102,18 @@ export class BasePage {
    * Clears existing text first
    */
   async fill(selector, text) {
+    // If it's a Playwright locator object, use it directly
+    if (typeof selector === 'object' && selector.fill && !selector.primary) {
+      console.log(`[FILL] Using Playwright locator for "${text}"`);
+      await selector.fill(text);
+      return;
+    }
+
     const resolvedSelector = await this.getSelector(selector);
     
     for (let i = 0; i < this.retryAttempts; i++) {
       try {
-        console.log(`[FILL] Filling "${resolvedSelector}" with: "${text}"`);
+        console.log(`[FILL] Filling selector "${resolvedSelector}" with: "${text}"`);
         await this.page.fill(resolvedSelector, text);
         return;
       } catch (error) {
@@ -187,9 +201,15 @@ export class BasePage {
    * Get text content of an element
    */
   async getText(selector) {
+    // If it's a Playwright locator object, use it directly
+    if (typeof selector === 'object' && selector.innerText && !selector.primary) {
+      console.log(`[GET TEXT] Using Playwright locator`);
+      return await selector.innerText();
+    }
+
     const resolvedSelector = await this.getSelector(selector);
     
-    console.log(`[GET TEXT] From: ${resolvedSelector}`);
+    console.log(`[GET TEXT] From selector: ${resolvedSelector}`);
     const text = await this.page.textContent(resolvedSelector);
     return text?.trim() || '';
   }
@@ -206,15 +226,23 @@ export class BasePage {
 
   /**
    * Check if element is visible
+   * Uses a shorter timeout to avoid long hangs during existence checks
    */
-  async isVisible(selector) {
+  async isVisible(selector, timeout = 2000) {
     try {
-      const resolvedSelector = await this.getSelector(selector);
+      // If it's a Playwright locator object, use it directly
+      if (typeof selector === 'object' && selector.isVisible && !selector.primary) {
+        const visible = await selector.isVisible();
+        console.log(`[VISIBILITY] Locator visible: ${visible}`);
+        return visible;
+      }
+
+      const resolvedSelector = await this.getSelector(selector, timeout);
       const isVisible = await this.page.isVisible(resolvedSelector);
-      console.log(`[VISIBILITY] ${resolvedSelector}: ${isVisible}`);
+      console.log(`[VISIBILITY] Selector ${resolvedSelector}: ${isVisible}`);
       return isVisible;
     } catch (error) {
-      console.log(`[VISIBILITY] Element not found or not visible`);
+      console.log(`[VISIBILITY] Element not found or not visible within ${timeout}ms`);
       return false;
     }
   }

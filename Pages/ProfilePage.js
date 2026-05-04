@@ -59,6 +59,26 @@ export class ProfilePage extends BasePage {
     console.log('[PROFILE PAGE] Asserting profile page is loaded');
     await this.assertVisible(this.locators.userInfo);
   }
+
+  // Upload profile picture
+  async uploadProfilePicture(filePath) {
+    console.log(`[PROFILE PAGE] Uploading profile picture from: ${filePath}`);
+    const fileInput = this.page.locator(this.locators.profileImageInput.primary);
+    
+    // Set file input
+    await fileInput.setInputFiles(filePath);
+    
+    // Wait for "Uploading" state
+    console.log('[PROFILE PAGE] Waiting for "Uploading" indicator...');
+    await this.page.waitForSelector(this.locators.uploadingIndicator.primary, { state: 'visible', timeout: 5000 }).catch(() => {
+        console.log('[PROFILE PAGE] Warning: "Uploading" indicator did not appear');
+    });
+    
+    // Wait for "Uploading" state to disappear
+    await this.page.waitForSelector(this.locators.uploadingIndicator.primary, { state: 'hidden', timeout: 15000 });
+    
+    console.log('[PROFILE PAGE] Upload completed');
+  }
 }
 
 export default ProfilePage;

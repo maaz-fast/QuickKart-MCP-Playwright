@@ -19,9 +19,9 @@ test.describe('Admin Product Management', () => {
 
     // Test 1: Creating a brand new product from scratch
     test('Should create a new product successfully', async ({ page }) => {
-        // This is the information for our new test product
+        // ... (data setup) ...
         const productData = {
-            name: 'Pro Gaming Mouse ' + Date.now(), // We add a timestamp to keep the name unique
+            name: 'Pro Gaming Mouse ' + Date.now(),
             description: 'Ultra high precision gaming mouse with RGB.',
             price: '85.99',
             stock: '50',
@@ -29,12 +29,10 @@ test.describe('Admin Product Management', () => {
             image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf'
         };
 
-        // We click the "Add Product" button and fill out the entire form
         await productsPage.addNewProduct(productData);
         
-        // We expect the app to redirect us back to the main list and show a success message
         await expect(page).toHaveURL(/.*admin\/products/);
-        await expect(page.locator('text=Product created successfully')).toBeVisible();
+        await expect(page.locator('text=/Product created/i')).toBeVisible();
     });
 
     // Test 2: Making sure we can find our products using the search bar
@@ -63,7 +61,7 @@ test.describe('Admin Product Management', () => {
             
             // We expect to be back on the products list with a success notification
             await expect(page).toHaveURL(/.*\/admin\/products/);
-            await expect(page.locator('text=Product updated successfully')).toBeVisible();
+            await expect(page.locator('text=/Product updated/i')).toBeVisible();
             
             // Finally, we verify that the price in the table actually shows the new value
             const updatedPrice = await productsPage.tableRows.first().locator('td').nth(3).innerText();
@@ -81,7 +79,7 @@ test.describe('Admin Product Management', () => {
             // We click the Delete button on the first product
             await productsPage.deleteProduct(0);
             // We confirm the deletion was successful
-            await expect(page.locator('text=Product deleted successfully')).toBeVisible();
+            await expect(page.locator('text=/Product deleted/i')).toBeVisible();
             
             // We verify that the number of products in the table has decreased by 1
             const finalCount = await productsPage.getProductCount();

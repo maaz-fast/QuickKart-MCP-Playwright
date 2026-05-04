@@ -130,6 +130,7 @@
 | TC-PROD-004 | Clicking a product opens product details | Checks the link from the product grid to the individual product detail page. | User logged in, on Home Page | 1. Note name of first product card 2. Click first product card | — | Navigates to /products/:id. Product name matches card. Price displayed (e.g. .00). Description visible. | Positive |
 | TC-PROD-005 | Quantity increment and decrement work | Tests the interactive quantity selector on the product details screen. | User logged in, on product detail page | 1. Go to any product detail page 2. Note initial quantity (1) 3. Click + button 4. Note quantity 5. Click - button 6. Note quantity | — | Initial: 1. After increment: 2. After decrement: 1. | Positive |
 | TC-PROD-006 | Pagination navigates to next page | Validates the ability to browse through multiple pages of products. | User logged in, multiple product pages exist | 1. Scroll to bottom of products 2. Click Next pagination button | — | Grid loads next page of products. Previous button becomes enabled. | Positive |
+| TC-PROD-007 | Filter products by price range | Verifies that products can be filtered by a specific price range. | User logged in, on Home Page | 1. Enter Min price 2. Enter Max price 3. Wait for results | Min: 10, Max: 100 | Only products within $10-$100 range are displayed. | Positive |
 
 ---
 
@@ -145,6 +146,7 @@
 | TC-PROF-004 | Profile navigation to Orders works | Validates the cross-navigation between account management pages. | User logged in, on Profile page | 1. Go to /profile 2. Click Orders in navbar | — | Navigates to /orders. Orders page heading or empty state visible. | Positive |
 | TC-PROF-005 | Logout from profile page works | Ensures the logout trigger is functional from the profile view. | User logged in, on Profile page | 1. Go to /profile 2. Click Logout button | — | Navigates to /login. Session cleared. | Positive |
 | TC-PROF-006 | Profile page handles loading state | Checks the UX during profile data retrieval. | User logged in | 1. Go to /profile 2. Observe page behavior during load | — | Loading indicator briefly shown then disappears when profile data loads. | Positive |
+| TC-PROF-007 | Upload user profile picture | Verifies that a user can upload a new profile image. | User logged in, on Profile page | 1. Select User_Avatar.png 2. Wait for upload | — | "Uploading" indicator shown then disappears. Toast "Profile image updated!" visible. | Positive |
 
 ---
 
@@ -221,6 +223,7 @@
 | TC-ADM-012 | Admin can resolve support tickets | Admin on Support page | 1. Click Resolve on a pending ticket | Ticket status changes to Resolved. |
 | TC-ADM-013 | Admin can sync activity logs | Admin on Activity Logs | 1. Click "Sync Logs" | Success message shown. Table refreshes with latest logs. |
 | TC-ADM-014 | Admin can edit product price | Admin on Products | 1. Click Edit 2. Change price 3. Click Update | Success toast visible. Table reflects new price. |
+| TC-ADM-015 | Admin can upload profile picture | Admin on Profile | 1. Select Admin_Avatar.png 2. Wait for upload | "Uploading" indicator shown then disappears. Toast "Profile image updated!" visible. |
 
 ---
 
@@ -248,14 +251,14 @@
 | Navigation (Auth) | 2 | 2 | 0 |
 | Cart | 13 | 13 | 0 |
 | Checkout | 4 | 3 | 1 |
-| Products | 6 | 6 | 0 |
-| Profile | 6 | 6 | 0 |
+| Products | 7 | 7 | 0 |
+| Profile | 7 | 7 | 0 |
 | Orders | 5 | 5 | 0 |
 | Wishlist | 6 | 6 | 0 |
 | Navigation (Account) | 4 | 4 | 0 |
-| Admin Panel | 14 | 14 | 0 |
+| Admin Panel | 15 | 15 | 0 |
 | Contact Page | 4 | 3 | 1 |
-| **TOTAL** | **83** | **77** | **6** |
+| **TOTAL** | **86** | **80** | **6** |
 
 ---
 

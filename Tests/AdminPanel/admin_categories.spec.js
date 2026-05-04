@@ -22,8 +22,8 @@ test.describe('Admin Categories Management', () => {
         await categoriesPage.addCategory(categoryName);
         
         // Verify in list
-        const names = await categoriesPage.getCategoryNames();
-        expect(names).toContain(categoryName);
+        const categoryList = page.locator('tbody tr');
+        await expect(categoryList).toContainText(categoryName);
         
         // Delete Category
         await categoriesPage.deleteCategory(categoryName);

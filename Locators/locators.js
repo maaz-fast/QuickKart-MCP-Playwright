@@ -243,13 +243,17 @@ export const locators = {
       primary: 'div[data-testid="loading-spinner"]',
       fallback: '.skeleton-card'
     },
-    previousPageButton: {
-      primary: 'button[data-testid="prev-page-button"]',
-      fallback: 'button:has-text("← Previous")'
-    },
     nextPageButton: {
       primary: 'button[data-testid="next-page-button"]',
       fallback: 'button:has-text("Next →")'
+    },
+    minPriceInput: {
+      primary: 'input[data-testid="min-price-filter"]',
+      fallback: 'input[placeholder="Min $"]'
+    },
+    maxPriceInput: {
+      primary: 'input[data-testid="max-price-filter"]',
+      fallback: 'input[placeholder="Max $"]'
     }
   },
 
@@ -514,6 +518,18 @@ export const locators = {
     saveButton: {
       primary: 'button[data-testid="profile-save-button"]',
       fallback: 'button:has-text("Save Profile")'
+    },
+    profileImageInput: {
+      primary: 'input[data-testid="profile-image-upload"]',
+      fallback: 'input[type="file"]'
+    },
+    profileImageUploadButton: {
+      primary: 'div:has-text("Choose New Photo")',
+      fallback: 'button:has-text("Choose New Photo")'
+    },
+    uploadingIndicator: {
+      primary: 'text="Uploading"',
+      fallback: 'div:has-text("Uploading")'
     }
   },
 

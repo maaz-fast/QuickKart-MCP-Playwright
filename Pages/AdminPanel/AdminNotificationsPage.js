@@ -1,13 +1,16 @@
-export class AdminNotificationsPage {
+import BasePage from '../BasePage.js';
+
+export class AdminNotificationsPage extends BasePage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.heading = page.locator('h1:has-text("Notifications")');
-        this.notificationItems = page.locator('.notification-item'); // Assuming a class based on usual patterns
+        this.notificationItems = page.locator('.notification-item');
         this.unreadDots = page.locator('.blue-dot');
     }
 
     async goto() {
-        await this.page.goto('https://quickkart-shop-nine.vercel.app/notifications');
+        await this.page.goto('/notifications');
+        await this.waitForLoadingToFinish();
     }
 
     async getNotificationCount() {

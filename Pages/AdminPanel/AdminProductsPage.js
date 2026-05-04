@@ -1,6 +1,8 @@
-export class AdminProductsPage {
+import BasePage from '../BasePage.js';
+
+export class AdminProductsPage extends BasePage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.addProductBtn = page.locator('a:has-text("Add Product")');
         this.tableRows = page.locator('tbody tr');
         
@@ -18,24 +20,26 @@ export class AdminProductsPage {
 
     async goto() {
         await this.page.goto('/admin/products');
+        await this.waitForLoadingToFinish();
     }
 
     async clickAddProduct() {
-        await this.addProductBtn.click();
+        await this.click(this.addProductBtn);
     }
 
     async fillProductForm(details) {
-        await this.form.name.fill(details.name);
-        await this.form.description.fill(details.description);
-        await this.form.price.fill(details.price);
-        await this.form.stock.fill(details.stock);
-        await this.form.image.fill(details.image);
+        await this.fill(this.form.name, details.name);
+        await this.fill(this.form.description, details.description);
+        await this.fill(this.form.price, details.price);
+        await this.fill(this.form.stock, details.stock);
+        await this.fill(this.form.image, details.image);
         
         // Handle custom dropdown
-        await this.form.categoryDropdown.click();
-        await this.page.locator(`div:has-text("${details.category}")`).last().click();
+        await this.click(this.form.categoryDropdown);
+        await this.click(this.page.locator(`div:has-text("${details.category}")`).last());
         
-        await this.form.submitBtn.click();
+        await this.click(this.form.submitBtn);
+        await this.waitForLoadingToFinish();
     }
 
     async getProductCount() {
@@ -44,24 +48,25 @@ export class AdminProductsPage {
 
     async deleteProduct(index = 0) {
         const deleteBtn = this.tableRows.nth(index).locator('button:has-text("Delete")');
-        await deleteBtn.click();
+        await this.click(deleteBtn);
+        await this.waitForLoadingToFinish();
     }
 
     async clickEditProduct(index = 0) {
         const editBtn = this.tableRows.nth(index).locator('button:has-text("Edit")');
-        await editBtn.click();
+        await this.click(editBtn);
     }
 
     async updateProductPrice(newPrice) {
-        await this.form.price.fill(newPrice);
-        await this.page.locator('button:has-text("Update Product")').click();
+        await this.fill(this.form.price, newPrice);
+        await this.click(this.page.locator('button:has-text("Update Product")'));
+        await this.waitForLoadingToFinish();
     }
 
     async searchProduct(name) {
-        // If there's a search bar, use it. Based on snapshot, we'll verify first.
         const searchBar = this.page.locator('input[placeholder*="Search"]');
-        if (await searchBar.isVisible()) {
-            await searchBar.fill(name);
+        if (await this.isVisible(searchBar)) {
+            await this.fill(searchBar, name);
         }
     }
 }
