@@ -1,0 +1,22 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://quickkart-shop-nine.vercel.app",
+      "localStorage": [
+        {
+          "name": "quickkart_theme",
+          "value": "light"
+        },
+        {
+          "name": "quickkart_token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZTUwYWRiMzgxYWE1MTJhN2IzMzI0NSIsImlhdCI6MTc3ODA5NTQwOCwiZXhwIjoxNzc4NzAwMjA4fQ._Zf6ocN1P7BJ6u_v7vKG7h0uB7wojXq_cJmmGgcwbcQ"
+        },
+        {
+          "name": "quickkart_user",
+          "value": "{\"_id\":\"69e50adb381aa512a7b33245\",\"name\":\"Maaz Imtiaz\",\"email\":\"maaz+admin@gmail.com\",\"role\":\"admin\"}"
+        }
+      ]
+    }
+  ]
+}

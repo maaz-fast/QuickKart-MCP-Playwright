@@ -11,9 +11,10 @@
     "mcp:start": "mcp server",
     "mcp:test": "playwright test --reporter=allure-playwright",
     "report": "playwright show-report",
-    "allure:generate": "allure generate allure-results --clean",
+    "allure:generate": "node -e \"const fs = require('fs'); if (fs.existsSync('allure-report/history')) fs.cpSync('allure-report/history', 'allure-results/history', {recursive: true})\" && allure generate allure-results --clean",
     "allure:open": "allure open allure-report",
-    "allure:report": "npm run allure:generate && npm run allure:open"
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "test:report": "node -e \"const { spawnSync } = require('child_process'); spawnSync('npx', ['playwright', 'test'], { stdio: 'inherit', shell: true }); spawnSync('npm', ['run', 'allure:report'], { stdio: 'inherit', shell: true });\""
   },
   "keywords": [
     "playwright",

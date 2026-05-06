@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { ContactPage } from '../Pages/ContactPage';
 
 // We are testing the "Contact Us" form to make sure users can actually reach out for support
-test.describe('Contact Us Form Tests', () => {
+test.describe('Contact Form Tests @contact', () => {
     let contactPage;
 
     // Before every single test, we need to set up our page and navigate to the contact URL

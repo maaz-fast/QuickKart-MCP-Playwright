@@ -7,7 +7,7 @@ import { SignupPage } from '../Pages/SignupPage.js';
 import { LoginPage } from '../Pages/LoginPage.js';
 import testData from '../Data/db.json' assert { type: 'json' };
 
-test.describe('Product Tests', () => {
+test.describe('Product Browsing & Filtering @products @smoke', () => {
 
   test.beforeEach(async ({ page }) => {
     const signupPage = new SignupPage(page);

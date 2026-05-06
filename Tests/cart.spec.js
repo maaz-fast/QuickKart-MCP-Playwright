@@ -7,7 +7,7 @@ import { ProductPage } from '../Pages/ProductPage.js';
 import { CartPage } from '../Pages/CartPage.js';
 import { CheckoutPage } from '../Pages/CheckoutPage.js';
 
-test.describe('Cart Tests', () => {
+test.describe('Cart Management Tests @cart @regression', () => {
 
   // Setup: Create user, login, and add product to cart before each test
   test.beforeEach(async ({ page }) => {

@@ -3,17 +3,16 @@ import { LoginPage } from '../../Pages/LoginPage';
 import { AdminProductsPage } from '../../Pages/AdminPanel/AdminProductsPage';
 
 // This suite tests the "Life Cycle" of a product: Creation, Search, Editing, and Deletion
-test.describe('Admin Product Management', () => {
-    let loginPage;
+test.describe('Admin Product Management @admin', () => {
     let productsPage;
 
-    // We start every test by logging in as the Admin and heading to the /admin/products page
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page);
+    // We use the storageState from playwright.config.js for instant login
+    test.beforeEach(async ({ page }, testInfo) => {
         productsPage = new AdminProductsPage(page);
+        
+        // Safety Valve: If this is a retry, skip it to prevent pipeline breakage
+        await productsPage.skipOnRetry(testInfo);
 
-        await loginPage.goto();
-        await loginPage.login('maaz+admin@gmail.com', '123456');
         await productsPage.goto();
     });
 

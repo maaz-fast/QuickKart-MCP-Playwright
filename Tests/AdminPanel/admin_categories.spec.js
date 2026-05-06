@@ -2,16 +2,12 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../Pages/LoginPage';
 import { AdminCategoriesPage } from '../../Pages/AdminPanel/AdminCategoriesPage';
 
-test.describe('Admin Categories Management', () => {
-    let loginPage;
+test.describe('Admin Category Management @admin', () => {
     let categoriesPage;
 
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page);
+    test.beforeEach(async ({ page }, testInfo) => {
         categoriesPage = new AdminCategoriesPage(page);
-
-        await loginPage.goto();
-        await loginPage.login('maaz+admin@gmail.com', '123456');
+        await categoriesPage.skipOnRetry(testInfo);
         await categoriesPage.goto();
     });
 

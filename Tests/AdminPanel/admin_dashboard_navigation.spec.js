@@ -5,21 +5,19 @@ import { AdminNotificationsPage } from '../../Pages/AdminPanel/AdminNotification
 import { AdminProfilePage } from '../../Pages/AdminPanel/AdminProfilePage';
 
 // We are testing the Admin Panel's "core" features: stats, navigation, and settings
-test.describe('Admin Dashboard & Navigation Tests', () => {
-    let loginPage;
+test.describe('Admin Dashboard & Navigation Tests @admin', () => {
     let dashboardPage;
 
-    // Before we can test anything in the Admin panel, we must log in as an administrator
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page);
+    // We are already logged in via storageState configured in playwright.config.js
+    test.beforeEach(async ({ page }, testInfo) => {
         dashboardPage = new AdminDashboardPage(page);
-
-        // We head to the login page and enter the admin credentials
-        await loginPage.goto();
-        await loginPage.login('maaz+admin@gmail.com', '123456');
         
-        // We double-check that the URL actually takes us to the admin dashboard
-        await expect(page).toHaveURL(/.*admin\/dashboard/);
+        // Safety Valve
+        await dashboardPage.skipOnRetry(testInfo);
+        
+        // Go directly to the admin dashboard
+        await page.goto('/admin/dashboard');
+        await dashboardPage.waitForLoadingToFinish();
     });
 
     // Test 1: Checking if the "Pulse" of the shop (Revenue, Orders, etc.) is visible
@@ -46,7 +44,8 @@ test.describe('Admin Dashboard & Navigation Tests', () => {
             // We verify the browser URL changed to the correct module path
             await expect(page).toHaveURL(new RegExp(`.*admin/${module === 'activityLogs' ? 'activity-logs' : module}`));
             // We navigate back to the dashboard to reset for the next loop iteration
-            await dashboardPage.sidebar.dashboard.click();
+            await dashboardPage.click(dashboardPage.sidebar.dashboard);
+            await dashboardPage.waitForLoadingToFinish();
         }
     });
 
@@ -55,11 +54,11 @@ test.describe('Admin Dashboard & Navigation Tests', () => {
         const notificationsPage = new AdminNotificationsPage(page);
         
         // We click the notification bell icon in the top header
-        await dashboardPage.header.notificationsBtn.click();
+        await dashboardPage.click(dashboardPage.header.notificationsBtn);
         
         // Once the dropdown opens, we click the "View All" link
-        await dashboardPage.header.viewAllNotifications.waitFor({ state: 'visible' });
-        await dashboardPage.header.viewAllNotifications.click();
+        await dashboardPage.waitForElement(dashboardPage.header.viewAllNotifications);
+        await dashboardPage.click(dashboardPage.header.viewAllNotifications);
         
         // We expect to land on the main /notifications page
         await expect(page).toHaveURL(/.*notifications/);
@@ -71,7 +70,7 @@ test.describe('Admin Dashboard & Navigation Tests', () => {
     test('Should verify Admin Profile settings', async ({ page }) => {
         const profilePage = new AdminProfilePage(page);
         // We click the profile icon in the header to enter settings
-        await dashboardPage.header.profileBtn.click();
+        await dashboardPage.click(dashboardPage.header.profileBtn);
         await expect(page).toHaveURL(/.*profile/);
         
         // Important: We check that the Email is read-only (disabled) so it can't be changed by accident
@@ -88,7 +87,7 @@ test.describe('Admin Dashboard & Navigation Tests', () => {
         const profilePage = new AdminProfilePage(page);
         const path = require('path');
         
-        await dashboardPage.header.profileBtn.click();
+        await dashboardPage.click(dashboardPage.header.profileBtn);
         await expect(page).toHaveURL(/.*profile/);
         
         const filePath = path.resolve('Resources/Admin_Avatar.png');

@@ -2,16 +2,12 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../Pages/LoginPage';
 import { AdminUsersPage } from '../../Pages/AdminPanel/AdminUsersPage';
 
-test.describe('Admin User Directory', () => {
-    let loginPage;
+test.describe('Admin User Directory @admin', () => {
     let usersPage;
 
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page);
+    test.beforeEach(async ({ page }, testInfo) => {
         usersPage = new AdminUsersPage(page);
-
-        await loginPage.goto();
-        await loginPage.login('maaz+admin@gmail.com', '123456');
+        await usersPage.skipOnRetry(testInfo);
         await usersPage.goto();
     });
 

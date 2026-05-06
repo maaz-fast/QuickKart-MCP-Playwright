@@ -13,7 +13,7 @@ export default defineConfig({
   workers: 1,
   reporter: [
     ['html'],
-    ['allure-playwright']
+    ['allure-playwright', { outputFolder: 'allure-results' }]
   ],
   use: {
     baseURL: 'https://quickkart-shop-nine.vercel.app',
@@ -25,17 +25,23 @@ export default defineConfig({
 
   projects: [
     {
+      name: 'setup',
+      testMatch: /admin\.setup\.js/,
+    },
+    {
+      name: 'admin',
+      testMatch: /AdminPanel\/.*\.spec\.js/,
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: '.auth/admin.json',
+      },
+    },
+    {
       name: 'chromium',
+      testIgnore: /AdminPanel\/.*\.spec\.js/,
       use: { ...devices['Desktop Chrome'] },
     },
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
   ],
 
   webServer: undefined,

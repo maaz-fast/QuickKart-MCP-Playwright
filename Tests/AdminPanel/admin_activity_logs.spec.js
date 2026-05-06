@@ -2,21 +2,17 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../Pages/LoginPage';
 import { AdminActivityLogsPage } from '../../Pages/AdminPanel/AdminActivityLogsPage';
 
-test.describe('Admin Activity Logs', () => {
-    let loginPage;
-    let logsPage;
+test.describe('Admin Activity Logs @admin', () => {
+    let activityLogsPage;
 
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page);
-        logsPage = new AdminActivityLogsPage(page);
-
-        await loginPage.goto();
-        await loginPage.login('maaz+admin@gmail.com', '123456');
-        await logsPage.goto();
+    test.beforeEach(async ({ page }, testInfo) => {
+        activityLogsPage = new AdminActivityLogsPage(page);
+        await activityLogsPage.skipOnRetry(testInfo);
+        await activityLogsPage.goto();
     });
 
     test.skip('Should sync activity logs', async ({ page }) => {
-        await logsPage.syncLogs();
+        await activityLogsPage.syncLogs();
         await expect(page.locator('text=/Logs synchronized/i')).toBeVisible();
     });
 

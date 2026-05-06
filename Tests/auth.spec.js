@@ -9,7 +9,7 @@ import { HomePage } from '../Pages/HomePage.js';
 import locators from '../Locators/locators.js';
 import testData from '../Data/db.json' assert { type: 'json' };
 
-test.describe('Authentication Tests', () => {
+test.describe('Authentication Tests @auth @smoke', () => {
 
   // ===================== SIGNUP TESTS =====================
 

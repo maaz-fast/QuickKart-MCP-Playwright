@@ -22,12 +22,20 @@ playwright-tests:
 # GitLab Pages hosting (Name must be 'pages')
 pages:
   stage: deploy
+  when: always
   image: node:18
+  cache:
+    key: allure-history
+    paths:
+      - public/history
   dependencies:
     - playwright-tests
   script:
     - apt-get update && apt-get install -y default-jre
     - npm install -g allure-commandline
+    - mkdir -p allure-results/history
+    # Copy previous history from cache (if it exists) into current results
+    - cp -r public/history/* allure-results/history/ || true
     - npm run allure:generate
     - mv allure-report public
   artifacts:

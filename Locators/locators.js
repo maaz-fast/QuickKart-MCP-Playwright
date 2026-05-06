@@ -551,6 +551,86 @@ export const locators = {
       primary: 'button:has-text("close")',
       fallback: 'button'
     }
+  },
+
+  // ===================== ADMIN PANEL =====================
+  admin: {
+    dashboard: {
+      stats: {
+        revenue: {
+          primary: '[data-testid="stat-revenue"] h2',
+          fallback: 'div:has-text("Total Revenue") ~ h2'
+        },
+        orders: {
+          primary: '[data-testid="stat-orders"] h2',
+          fallback: 'div:has-text("Total Orders") ~ h2'
+        },
+        products: {
+          primary: '[data-testid="stat-products"] h2',
+          fallback: 'div:has-text("Total Products") ~ h2'
+        },
+        users: {
+          primary: '[data-testid="stat-users"] h2',
+          fallback: 'div:has-text("Total Users") ~ h2'
+        }
+      }
+    },
+    sidebar: {
+      dashboard: {
+        primary: '[data-testid="admin-nav-dashboard"]',
+        fallback: 'aside a:has-text("Dashboard")'
+      },
+      products: {
+        primary: '[data-testid="admin-nav-products"]',
+        fallback: 'aside a:has-text("Products")'
+      },
+      categories: {
+        primary: '[data-testid="admin-nav-categories"]',
+        fallback: 'aside a:has-text("Categories")'
+      },
+      orders: {
+        primary: '[data-testid="admin-nav-orders"]',
+        fallback: 'aside a:has-text("Orders")'
+      },
+      users: {
+        primary: '[data-testid="admin-nav-users"]',
+        fallback: 'aside a:has-text("Users")'
+      },
+      support: {
+        primary: '[data-testid="admin-nav-support"]',
+        fallback: 'aside a:has-text("Support")'
+      },
+      activityLogs: {
+        primary: '[data-testid="admin-nav-activity-logs"]',
+        fallback: 'aside a:has-text("Activity Logs")'
+      }
+    },
+    usersPage: {
+      tableRows: {
+        primary: 'tbody tr',
+        fallback: '.user-list-row'
+      }
+    },
+    productsPage: {
+      addProductBtn: {
+        primary: 'button:has-text("Add Product")',
+        fallback: 'button.btn-primary >> nth=0'
+      },
+      searchBar: {
+        primary: 'input[placeholder*="Search"]',
+        fallback: 'input[type="text"]'
+      }
+    },
+    notifications: {
+      heading: {
+        primary: 'h1:has-text("Notifications")',
+        fallback: 'h1'
+      },
+      viewAllLink: {
+        primary: 'a:has-text("View All Notifications")',
+        fallback: 'a[href*="notifications"]'
+      }
+    }
   }
 };
 

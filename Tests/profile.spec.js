@@ -7,7 +7,7 @@ import { ProfilePage } from '../Pages/ProfilePage.js';
 import { OrdersPage } from '../Pages/OrdersPage.js';
 import { WishlistPage } from '../Pages/WishlistPage.js';
 
-test.describe('Profile/Account Tests', () => {
+test.describe('User Profile & Settings @profile', () => {
 
   // Setup: Create user and login before each test
   test.beforeEach(async ({ page }) => {

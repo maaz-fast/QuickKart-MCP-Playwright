@@ -9,7 +9,7 @@ import { CheckoutPage } from '../Pages/CheckoutPage.js';
 import { OrdersPage } from '../Pages/OrdersPage.js';
 import testData from '../Data/db.json' assert { type: 'json' };
 
-test.describe('Checkout Tests', () => {
+test.describe('Checkout Flow Tests @checkout @regression', () => {
 
   test.beforeEach(async ({ page }) => {
     const signupPage = new SignupPage(page);
