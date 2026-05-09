@@ -2,31 +2,39 @@
 // Primary and fallback selectors for all page elements
 
 export const locators = {
+  // ===================== COMMON/UTILITIES =====================
+  common: {
+    pageLoader: {
+      primary: '[data-testid="page-loader"]',
+      fallback: '.loading-spinner'
+    }
+  },
+
   // ===================== COMMON/NAVIGATION =====================
   navigation: {
     quickkartLogo: {
-      primary: 'a[href="/"]',
-      fallback: 'text=QuickKart'
-    },
-    homeLink: {
-      primary: 'a.nav-link:has-text("Home")',
+      primary: 'a[data-testid="navbar-logo"]',
       fallback: 'a[href="/"]'
     },
+    homeLink: {
+      primary: 'a[data-testid="navbar-home-link"]',
+      fallback: 'a.nav-link:has-text("Home")'
+    },
     contactLink: {
-      primary: 'a.nav-link:has-text("Contact")',
+      primary: 'a[data-testid="navbar-contact-link"]',
       fallback: 'a[href="/contact"]'
     },
     ordersLink: {
-      primary: 'a.nav-link:has-text("Orders")',
+      primary: 'a[data-testid="navbar-orders-link"]',
       fallback: 'a[href="/orders"]'
     },
     wishlistLink: {
-      primary: 'a.nav-link:has-text("Wishlist")',
+      primary: 'a[data-testid="navbar-wishlist-link"]',
       fallback: 'a[href="/wishlist"]'
     },
     cartLink: {
-      primary: 'a[data-testid="cart-icon"]',
-      fallback: 'a[href="/cart"]'
+      primary: 'a[data-testid="navbar-cart-link"]',
+      fallback: 'a[data-testid="cart-icon"]'
     },
     cartCountBadge: {
       primary: 'span[data-testid="cart-count-badge"]',
@@ -41,8 +49,8 @@ export const locators = {
       fallback: 'button.theme-toggle'
     },
     userProfileLink: {
-      primary: 'a[href="/profile"]',
-      fallback: 'a.nav-user'
+      primary: 'a[data-testid="navbar-username"]',
+      fallback: 'a[href="/profile"]'
     },
     logoutButton: {
       primary: 'button[data-testid="logout-button"]',
@@ -630,6 +638,24 @@ export const locators = {
         primary: 'a:has-text("View All Notifications")',
         fallback: 'a[href*="notifications"]'
       }
+    },
+    categoriesPage: {
+      page: '[data-testid="admin-categories-page"]',
+      nameInput: '[data-testid="new-category-input"]',
+      addBtn: '[data-testid="add-category-btn"]',
+      table: '[data-testid="admin-categories-table"]',
+      row: '[data-testid^="category-row-"]',
+      categoryName: '[data-testid="category-name"]',
+      deleteBtn: '[data-testid^="delete-category-"]'
+    },
+    ordersPage: {
+      page: '[data-testid="admin-orders-page"]',
+      table: '[data-testid="admin-orders-table"]',
+      row: '[data-testid^="admin-order-row-"]',
+      filterDropdown: '[data-testid="admin-order-filter"]',
+      statusBadge: '[data-testid="status-badge"]',
+      statusUpdateBtn: '[data-testid^="status-update-"]',
+      viewOrderBtn: '[data-testid^="view-order-"]'
     }
   }
 };

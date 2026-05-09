@@ -7,7 +7,6 @@ test.describe('Admin Support Management @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         supportPage = new AdminSupportPage(page);
-        await supportPage.skipOnRetry(testInfo);
         await supportPage.goto();
     });
 

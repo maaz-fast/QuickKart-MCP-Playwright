@@ -27,6 +27,11 @@ export class AdminProductsPage extends BasePage {
         await this.click(this.addProductBtn);
     }
 
+    async addNewProduct(details) {
+        await this.clickAddProduct();
+        await this.fillProductForm(details);
+    }
+
     async fillProductForm(details) {
         await this.fill(this.form.name, details.name);
         await this.fill(this.form.description, details.description);
@@ -35,8 +40,9 @@ export class AdminProductsPage extends BasePage {
         await this.fill(this.form.image, details.image);
         
         // Handle custom dropdown
-        await this.click(this.form.categoryDropdown);
-        await this.click(this.page.locator(`div:has-text("${details.category}")`).last());
+        await this.click(this.form.categoryDropdown, { force: true });
+        const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(`^${details.category}$`) });
+        await this.click(option.first(), { force: true });
         
         await this.click(this.form.submitBtn);
         await this.waitForLoadingToFinish();

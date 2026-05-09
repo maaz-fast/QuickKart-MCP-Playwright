@@ -7,20 +7,23 @@ test.describe('Admin Order Management @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         ordersPage = new AdminOrdersPage(page);
-        await ordersPage.skipOnRetry(testInfo);
+        page.on('dialog', dialog => dialog.accept());
         await ordersPage.goto();
     });
 
     test('Should update order status', async ({ page }) => {
-        // Get the first order ID from the table
-        const firstRow = ordersPage.tableRows.first();
-        const orderId = await firstRow.locator('td').nth(1).innerText();
+        // Find the first order that is NOT 'Delivered' (since Delivered orders are disabled for update)
+        const row = ordersPage.tableRows.filter({ hasNot: page.locator('text=Delivered') }).first();
+        const orderId = await row.locator('td').nth(1).innerText();
+        const currentStatus = await row.locator('[data-testid="status-badge"]').innerText();
+        const targetStatus = 'Shipped';
         
-        // Update status to Shipped
-        await ordersPage.updateOrderStatus(orderId, 'Shipped');
+        // Update status
+        await ordersPage.updateOrderStatus(orderId, targetStatus);
         
-        // Verify toast message
-        await expect(page.locator('text=/Order status updated/i')).toBeVisible();
+        // Verify status in table
+        const verificationRow = ordersPage.tableRows.filter({ hasText: orderId });
+        await expect(verificationRow.locator('[data-testid="status-badge"]')).toContainText(targetStatus);
     });
 
     test('Should filter orders by status', async ({ page }) => {
@@ -28,9 +31,9 @@ test.describe('Admin Order Management @admin', () => {
         
         // Verify all visible rows have 'Delivered' status
         const rowCount = await ordersPage.tableRows.count();
-        if (rowCount > 0) {
-            const statusTexts = await ordersPage.tableRows.locator('td').allInnerTexts();
-            expect(statusTexts.every(t => t.includes('Delivered'))).toBe(true);
+        for (let i = 0; i < rowCount; i++) {
+            const status = await ordersPage.tableRows.nth(i).locator('[data-testid="status-badge"]').innerText();
+            expect(status).toContain('Delivered');
         }
     });
 });

@@ -7,7 +7,6 @@ test.describe('Admin User Directory @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         usersPage = new AdminUsersPage(page);
-        await usersPage.skipOnRetry(testInfo);
         await usersPage.goto();
     });
 

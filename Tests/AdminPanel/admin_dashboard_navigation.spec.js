@@ -12,9 +12,6 @@ test.describe('Admin Dashboard & Navigation Tests @admin', () => {
     test.beforeEach(async ({ page }, testInfo) => {
         dashboardPage = new AdminDashboardPage(page);
         
-        // Safety Valve
-        await dashboardPage.skipOnRetry(testInfo);
-        
         // Go directly to the admin dashboard
         await page.goto('/admin/dashboard');
         await dashboardPage.waitForLoadingToFinish();

@@ -7,19 +7,18 @@ test.describe('Admin Category Management @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         categoriesPage = new AdminCategoriesPage(page);
-        await categoriesPage.skipOnRetry(testInfo);
+        page.on('dialog', dialog => dialog.accept());
         await categoriesPage.goto();
     });
 
     test('Should add and delete a category', async ({ page }) => {
-        const categoryName = `New Cat ${Date.now()}`;
+        const categoryName = `AAA New Cat ${Date.now()}`;
         
         // Add Category
         await categoriesPage.addCategory(categoryName);
         
         // Verify in list
-        const categoryList = page.locator('tbody tr');
-        await expect(categoryList).toContainText(categoryName);
+        await expect(categoriesPage.tableRows.filter({ hasText: categoryName })).toBeVisible();
         
         // Delete Category
         await categoriesPage.deleteCategory(categoryName);

@@ -7,7 +7,6 @@ test.describe('Admin Activity Logs @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         activityLogsPage = new AdminActivityLogsPage(page);
-        await activityLogsPage.skipOnRetry(testInfo);
         await activityLogsPage.goto();
     });
 
@@ -17,20 +16,20 @@ test.describe('Admin Activity Logs @admin', () => {
     });
 
     test('Should filter logs by level', async ({ page }) => {
-        await logsPage.filterLogs(null, 'Error');
+        await activityLogsPage.filterLogs(null, 'Error');
         
         // Verify only Error logs are shown
-        const logContent = await logsPage.getLatestLog();
+        const logContent = await activityLogsPage.getLatestLog();
         if (logContent) {
             // Note: This depends on the exact log text format
-            await expect(logsPage.logRows.first()).toBeVisible();
+            await expect(activityLogsPage.logRows.first()).toBeVisible();
         }
     });
 
     test('Should display log details', async ({ page }) => {
-        const rowCount = await logsPage.logRows.count();
+        const rowCount = await activityLogsPage.logRows.count();
         if (rowCount > 0) {
-            await logsPage.logRows.first().click();
+            await activityLogsPage.logRows.first().click();
             // Verify detail modal or expansion
             await expect(page.locator('text=Log Details')).toBeVisible();
         }

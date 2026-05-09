@@ -3,9 +3,10 @@ import BasePage from '../BasePage.js';
 export class AdminCategoriesPage extends BasePage {
     constructor(page) {
         super(page);
-        this.nameInput = page.locator('input#categoryName');
-        this.addBtn = page.locator('button:has-text("Add Category")');
-        this.tableRows = page.locator('tbody tr');
+        this.pageContainer = page.locator('[data-testid="admin-categories-page"]');
+        this.nameInput = page.locator('[data-testid="new-category-input"]');
+        this.addBtn = page.locator('[data-testid="add-category-btn"]');
+        this.tableRows = page.locator('[data-testid^="category-row-"]');
     }
 
     async goto() {
@@ -21,7 +22,12 @@ export class AdminCategoriesPage extends BasePage {
 
     async deleteCategory(name) {
         const row = this.tableRows.filter({ hasText: name });
-        await this.click(row.locator('button.btn-error'));
+        const deleteBtn = row.locator('[data-testid^="delete-category-"]');
+        await this.click(deleteBtn, { force: true });
+        
+        // Handle custom modal
+        const confirmBtn = this.page.locator('button:has-text("Delete Category")').last();
+        await this.click(confirmBtn);
         await this.waitForLoadingToFinish();
     }
 

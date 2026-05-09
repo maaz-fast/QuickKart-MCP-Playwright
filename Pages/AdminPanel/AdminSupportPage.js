@@ -19,8 +19,11 @@ export class AdminSupportPage extends BasePage {
 
     async filterByStatus(status) {
         // Click custom header filter
-        await this.click(this.page.locator('div:has-text("All Status")').first());
-        await this.click(this.page.locator(`div:text("${status}")`).last());
+        const filterDropdown = this.page.locator('div:text("Status") + *').first();
+        await this.click(filterDropdown, { force: true });
+        await this.page.waitForSelector('.custom-select-options', { state: 'visible', timeout: 5000 });
+        const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(`^${status}$`) });
+        await this.click(option.first(), { force: true });
         await this.waitForLoadingToFinish();
     }
 }
