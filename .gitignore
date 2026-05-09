@@ -10,3 +10,8 @@ allure-report/
 *.log
 dist/
 build/
+.auth/
+scratch/
+*.png
+test-results.json
+Prompt.md

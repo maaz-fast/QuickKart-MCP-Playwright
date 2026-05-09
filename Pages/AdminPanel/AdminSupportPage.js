@@ -1,9 +1,11 @@
 import BasePage from '../BasePage.js';
+import locators from '../../Locators/locators.js';
 
 export class AdminSupportPage extends BasePage {
     constructor(page) {
         super(page);
-        this.ticketRows = page.locator('tbody tr');
+        this.locators = locators.admin.supportPage;
+        this.ticketRows = page.locator(this.locators.tableRows.primary);
     }
 
     async goto() {
@@ -13,13 +15,13 @@ export class AdminSupportPage extends BasePage {
 
     async resolveTicket(index = 0) {
         const row = this.ticketRows.nth(index);
-        await this.click(row.locator('button:has-text("Resolve")'));
+        await this.click(row.locator(this.locators.resolveBtn));
         await this.waitForLoadingToFinish();
     }
 
     async filterByStatus(status) {
         // Click custom header filter
-        const filterDropdown = this.page.locator('div:text("Status") + *').first();
+        const filterDropdown = this.page.locator(this.locators.statusFilter).first();
         await this.click(filterDropdown, { force: true });
         await this.page.waitForSelector('.custom-select-options', { state: 'visible', timeout: 5000 });
         const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(`^${status}$`) });

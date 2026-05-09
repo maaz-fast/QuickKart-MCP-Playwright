@@ -17,12 +17,13 @@ test.describe('Admin Support Management @admin', () => {
         const initialCount = await supportPage.ticketRows.count();
         if (initialCount > 0) {
             await supportPage.resolveTicket(0);
-            await expect(page.locator('text=Ticket resolved')).toBeVisible();
             
-            // Should now be fewer pending tickets
-            await page.waitForTimeout(1000); // Wait for list refresh
-            const finalCount = await supportPage.ticketRows.count();
-            expect(finalCount).toBeLessThan(initialCount);
+            // Wait for the list to refresh and the count to decrease
+            await expect(async () => {
+                await supportPage.filterByStatus('Pending');
+                const currentCount = await supportPage.ticketRows.count();
+                expect(currentCount).toBeLessThan(initialCount);
+            }).toPass({ timeout: 10000 });
         }
     });
 

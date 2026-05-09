@@ -24,7 +24,7 @@ export class BasePage {
     // Split path like "loginPage.emailInput" to get nested value
     const parts = locatorPath.split('.');
     let locator = locators;
-    
+
     for (const part of parts) {
       locator = locator[part];
     }
@@ -69,7 +69,7 @@ export class BasePage {
     }
 
     const selector = await this.getSelector(locator);
-    
+
     for (let i = 0; i < this.retryAttempts; i++) {
       try {
         console.log(`[CLICK] Clicking selector: ${selector}`);
@@ -90,7 +90,7 @@ export class BasePage {
     if (typeof locator === 'string') {
       return locator; // Direct string selector
     }
-    
+
     // Locator object with primary and fallback
     return await this.tryLocator(locator.primary, locator.fallback, timeout);
   }
@@ -110,7 +110,7 @@ export class BasePage {
     }
 
     const resolvedSelector = await this.getSelector(selector);
-    
+
     for (let i = 0; i < this.retryAttempts; i++) {
       try {
         console.log(`[FILL] Filling selector "${resolvedSelector}" with: "${text}"`);
@@ -130,7 +130,7 @@ export class BasePage {
    */
   async type(selector, text, options = {}) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[TYPE] Typing into "${resolvedSelector}": "${text}"`);
     await this.page.click(resolvedSelector);
     await this.page.type(resolvedSelector, text, options);
@@ -141,7 +141,7 @@ export class BasePage {
    */
   async clear(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[CLEAR] Clearing field: ${resolvedSelector}`);
     await this.page.fill(resolvedSelector, '');
   }
@@ -153,7 +153,7 @@ export class BasePage {
    */
   async waitForElement(selector, timeout = this.timeout) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[WAIT] Waiting for element: ${resolvedSelector}`);
     await this.page.waitForSelector(resolvedSelector, { timeout });
   }
@@ -213,7 +213,7 @@ export class BasePage {
     }
 
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[GET TEXT] From selector: ${resolvedSelector}`);
     const text = await this.page.textContent(resolvedSelector);
     return text?.trim() || '';
@@ -224,7 +224,7 @@ export class BasePage {
    */
   async getInputValue(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[GET VALUE] From: ${resolvedSelector}`);
     return await this.page.inputValue(resolvedSelector);
   }
@@ -235,11 +235,15 @@ export class BasePage {
    */
   async isVisible(selector, timeout = 2000) {
     try {
-      // If it's a Playwright locator object, use it directly
+      // If it's a Playwright locator object, use it
       if (typeof selector === 'object' && selector.isVisible && !selector.primary) {
-        const visible = await selector.isVisible();
-        console.log(`[VISIBILITY] Locator visible: ${visible}`);
-        return visible;
+        try {
+          await selector.waitFor({ state: 'visible', timeout });
+          return true;
+        } catch (e) {
+          console.log(`[VISIBILITY] Locator not visible within ${timeout}ms`);
+          return false;
+        }
       }
 
       const primary = typeof selector === 'string' ? selector : selector.primary;
@@ -274,7 +278,7 @@ export class BasePage {
    */
   async isEnabled(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ENABLED] Checking: ${resolvedSelector}`);
     return await this.page.isEnabled(resolvedSelector);
   }
@@ -302,7 +306,7 @@ export class BasePage {
    */
   async hasAttribute(selector, attribute, value) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     const attrValue = await this.page.getAttribute(resolvedSelector, attribute);
     return attrValue === value;
   }
@@ -312,7 +316,7 @@ export class BasePage {
    */
   async getAttribute(selector, attribute) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[GET ATTR] ${attribute} from: ${resolvedSelector}`);
     return await this.page.getAttribute(resolvedSelector, attribute);
   }
@@ -353,7 +357,7 @@ export class BasePage {
    */
   async assertVisible(selector, message = '') {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ASSERT] Element visible: ${resolvedSelector}`);
     await expect(this.page.locator(resolvedSelector)).toBeVisible();
   }
@@ -363,7 +367,7 @@ export class BasePage {
    */
   async assertHidden(selector, message = '') {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ASSERT] Element hidden: ${resolvedSelector}`);
     await expect(this.page.locator(resolvedSelector)).toBeHidden();
   }
@@ -373,7 +377,7 @@ export class BasePage {
    */
   async assertTextContains(selector, expectedText) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ASSERT] Text contains "${expectedText}" in: ${resolvedSelector}`);
     await expect(this.page.locator(resolvedSelector)).toContainText(expectedText);
   }
@@ -383,7 +387,7 @@ export class BasePage {
    */
   async assertTextEquals(selector, expectedText) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ASSERT] Text equals "${expectedText}" in: ${resolvedSelector}`);
     await expect(this.page.locator(resolvedSelector)).toHaveText(expectedText);
   }
@@ -401,7 +405,7 @@ export class BasePage {
    */
   async assertInputValue(selector, expectedValue) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ASSERT] Input value: "${expectedValue}"`);
     await expect(this.page.locator(resolvedSelector)).toHaveValue(expectedValue);
   }
@@ -411,7 +415,7 @@ export class BasePage {
    */
   async assertEnabled(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ASSERT] Element enabled: ${resolvedSelector}`);
     await expect(this.page.locator(resolvedSelector)).toBeEnabled();
   }
@@ -421,7 +425,7 @@ export class BasePage {
    */
   async assertDisabled(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[ASSERT] Element disabled: ${resolvedSelector}`);
     await expect(this.page.locator(resolvedSelector)).toBeDisabled();
   }
@@ -441,7 +445,7 @@ export class BasePage {
    */
   async selectDropdownOption(selector, value) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[SELECT] Selecting "${value}" from: ${resolvedSelector}`);
     await this.page.selectOption(resolvedSelector, value);
   }
@@ -451,7 +455,7 @@ export class BasePage {
    */
   async checkCheckbox(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[CHECK] Checking: ${resolvedSelector}`);
     await this.page.check(resolvedSelector);
   }
@@ -461,7 +465,7 @@ export class BasePage {
    */
   async uncheckCheckbox(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[UNCHECK] Unchecking: ${resolvedSelector}`);
     await this.page.uncheck(resolvedSelector);
   }
@@ -471,7 +475,7 @@ export class BasePage {
    */
   async doubleClick(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[DOUBLE CLICK] On: ${resolvedSelector}`);
     await this.page.dblclick(resolvedSelector);
   }
@@ -481,7 +485,7 @@ export class BasePage {
    */
   async hover(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[HOVER] Over: ${resolvedSelector}`);
     await this.page.hover(resolvedSelector);
   }
@@ -499,7 +503,7 @@ export class BasePage {
    */
   async getAllText(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[GET ALL TEXT] From: ${resolvedSelector}`);
     const texts = await this.page.locator(resolvedSelector).allTextContents();
     return texts.map(t => t.trim());
@@ -510,7 +514,7 @@ export class BasePage {
    */
   async scrollToElement(selector) {
     const resolvedSelector = await this.getSelector(selector);
-    
+
     console.log(`[SCROLL] To element: ${resolvedSelector}`);
     await this.page.locator(resolvedSelector).scrollIntoViewIfNeeded();
   }
@@ -520,9 +524,9 @@ export class BasePage {
    */
   async takeScreenshot(filename = 'screenshot') {
     console.log(`[SCREENSHOT] Taking: ${filename}.png`);
-    await this.page.screenshot({ 
+    await this.page.screenshot({
       path: `./screenshots/${filename}-${Date.now()}.png`,
-      fullPage: true 
+      fullPage: true
     });
   }
 
@@ -545,15 +549,15 @@ export class BasePage {
   async waitForLoadingToFinish(targetSelector = null, timeout = 15000) {
     try {
       console.log('[WAIT] Waiting for loaders to finish...');
-      
+
       // We wait a tiny bit to allow the loader to actually appear in the DOM
       await this.page.waitForTimeout(300);
 
       // 1. Wait for standardized page-loader to be hidden
-      await this.page.waitForSelector('[data-testid="page-loader"]', { state: 'hidden', timeout: 5000 }).catch(() => {});
-      
+      await this.page.waitForSelector('[data-testid="page-loader"]', { state: 'hidden', timeout: 5000 }).catch(() => { });
+
       // 2. Wait for any generic loading indicators to be hidden
-      await this.page.waitForSelector('[data-testid*="loading"]', { state: 'hidden', timeout: 5000 }).catch(() => {});
+      await this.page.waitForSelector('[data-testid*="loading"]', { state: 'hidden', timeout: 5000 }).catch(() => { });
 
       // 3. If a target selector is provided, wait for it to be visible
       if (targetSelector) {

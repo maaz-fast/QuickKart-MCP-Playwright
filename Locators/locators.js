@@ -615,19 +615,29 @@ export const locators = {
     },
     usersPage: {
       tableRows: {
-        primary: 'tbody tr',
-        fallback: '.user-list-row'
-      }
+        primary: '[data-testid="admin-users-table"] tbody tr',
+        fallback: 'tbody tr'
+      },
+      userName: '[data-testid="user-name"]',
+      userEmail: '[data-testid="user-email"]',
+      userRole: '[data-testid="user-role"]'
     },
     productsPage: {
       addProductBtn: {
-        primary: 'button:has-text("Add Product")',
-        fallback: 'button.btn-primary >> nth=0'
+        primary: '[data-testid="add-product-button"]',
+        fallback: 'a:has-text("Add Product")'
       },
       searchBar: {
         primary: 'input[placeholder*="Search"]',
         fallback: 'input[type="text"]'
-      }
+      },
+      tableRows: {
+        primary: 'tbody tr',
+        fallback: '.product-list-row'
+      },
+      productName: '[data-testid="product-name"]',
+      productCategory: '[data-testid="product-category"]',
+      productPrice: '[data-testid="product-price"]'
     },
     notifications: {
       heading: {
@@ -656,6 +666,32 @@ export const locators = {
       statusBadge: '[data-testid="status-badge"]',
       statusUpdateBtn: '[data-testid^="status-update-"]',
       viewOrderBtn: '[data-testid^="view-order-"]'
+    },
+    supportPage: {
+      tableRows: {
+        primary: 'tbody tr',
+        fallback: '.support-ticket-row'
+      },
+      resolveBtn: 'button:has-text("Resolve")',
+      statusFilter: 'div:text("Status") + *'
+    },
+    activityLogsPage: {
+      syncBtn: {
+        primary: 'button:has-text("Sync Logs")',
+        fallback: 'button.sync-btn'
+      },
+      tableRows: {
+        primary: 'tbody tr',
+        fallback: '.activity-log-row'
+      },
+      categoryFilter: {
+        primary: '.custom-select-wrapper:has-text("ACTIVITY CATEGORY")',
+        fallback: 'div:text("Activity Category") + *'
+      },
+      levelFilter: {
+        primary: '.custom-select-wrapper:has-text("ACCESS LEVEL")',
+        fallback: 'div:text("Access Level") + *'
+      }
     }
   }
 };

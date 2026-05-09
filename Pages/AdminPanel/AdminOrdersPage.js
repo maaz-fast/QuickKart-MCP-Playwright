@@ -1,10 +1,12 @@
 import BasePage from '../BasePage.js';
+import locators from '../../Locators/locators.js';
 
 export class AdminOrdersPage extends BasePage {
     constructor(page) {
         super(page);
-        this.tableRows = page.locator('[data-testid^="admin-order-row-"]');
-        this.filterDropdown = page.locator('[data-testid="admin-order-filter"]');
+        this.locators = locators.admin.ordersPage;
+        this.tableRows = page.locator(this.locators.row);
+        this.filterDropdown = page.locator(this.locators.filterDropdown);
     }
 
     async goto() {
@@ -15,7 +17,7 @@ export class AdminOrdersPage extends BasePage {
     async updateOrderStatus(orderId, newStatus) {
         // Find row by order ID
         const row = this.tableRows.filter({ hasText: orderId });
-        const statusBtn = row.locator('[data-testid^="status-update-"]');
+        const statusBtn = row.locator(this.locators.statusUpdateBtn);
         
         // Ensure element is in view and click
         await statusBtn.scrollIntoViewIfNeeded();

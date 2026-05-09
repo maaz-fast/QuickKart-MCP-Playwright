@@ -19,9 +19,9 @@ export class AdminUsersPage extends BasePage {
     async getUserDetails(index = 0) {
         const row = this.page.locator(this.locators.tableRows.primary).nth(index);
         return {
-            name: await this.getText(row.locator('td').nth(1)),
-            email: await this.getText(row.locator('td').nth(2)),
-            role: await this.getText(row.locator('td').nth(3))
+            name: await this.getText(row.locator(this.locators.userName)),
+            email: await this.getText(row.locator(this.locators.userEmail)),
+            role: await this.getText(row.locator(this.locators.userRole))
         };
     }
 }

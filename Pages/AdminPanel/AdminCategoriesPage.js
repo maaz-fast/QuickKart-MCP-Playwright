@@ -1,12 +1,14 @@
 import BasePage from '../BasePage.js';
+import locators from '../../Locators/locators.js';
 
 export class AdminCategoriesPage extends BasePage {
     constructor(page) {
         super(page);
-        this.pageContainer = page.locator('[data-testid="admin-categories-page"]');
-        this.nameInput = page.locator('[data-testid="new-category-input"]');
-        this.addBtn = page.locator('[data-testid="add-category-btn"]');
-        this.tableRows = page.locator('[data-testid^="category-row-"]');
+        this.locators = locators.admin.categoriesPage;
+        this.pageContainer = page.locator(this.locators.page);
+        this.nameInput = page.locator(this.locators.nameInput);
+        this.addBtn = page.locator(this.locators.addBtn);
+        this.tableRows = page.locator(this.locators.row);
     }
 
     async goto() {
@@ -22,7 +24,7 @@ export class AdminCategoriesPage extends BasePage {
 
     async deleteCategory(name) {
         const row = this.tableRows.filter({ hasText: name });
-        const deleteBtn = row.locator('[data-testid^="delete-category-"]');
+        const deleteBtn = row.locator(this.locators.deleteBtn);
         await this.click(deleteBtn, { force: true });
         
         // Handle custom modal

@@ -19,9 +19,8 @@ test.describe('Admin Activity Logs @admin', () => {
         await activityLogsPage.filterLogs(null, 'Error');
         
         // Verify only Error logs are shown
-        const logContent = await activityLogsPage.getLatestLog();
-        if (logContent) {
-            // Note: This depends on the exact log text format
+        const rowCount = await activityLogsPage.logRows.count();
+        if (rowCount > 0) {
             await expect(activityLogsPage.logRows.first()).toBeVisible();
         }
     });
