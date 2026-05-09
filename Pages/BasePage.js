@@ -242,10 +242,27 @@ export class BasePage {
         return visible;
       }
 
-      const resolvedSelector = await this.getSelector(selector, timeout);
-      const isVisible = await this.page.isVisible(resolvedSelector);
-      console.log(`[VISIBILITY] Selector ${resolvedSelector}: ${isVisible}`);
-      return isVisible;
+      const primary = typeof selector === 'string' ? selector : selector.primary;
+      const fallback = typeof selector === 'string' ? null : selector.fallback;
+
+      try {
+        await this.page.waitForSelector(primary, { state: 'visible', timeout });
+        console.log(`[VISIBILITY] Selector ${primary}: true`);
+        return true;
+      } catch (e) {
+        if (!fallback) {
+          console.log(`[VISIBILITY] Element not found or not visible within ${timeout}ms`);
+          return false;
+        }
+        try {
+          await this.page.waitForSelector(fallback, { state: 'visible', timeout });
+          console.log(`[VISIBILITY] Selector ${fallback}: true`);
+          return true;
+        } catch (fallbackError) {
+          console.log(`[VISIBILITY] Element not found or not visible within ${timeout}ms`);
+          return false;
+        }
+      }
     } catch (error) {
       console.log(`[VISIBILITY] Element not found or not visible within ${timeout}ms`);
       return false;

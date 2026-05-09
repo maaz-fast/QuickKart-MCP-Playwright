@@ -388,35 +388,35 @@ export const locators = {
       fallback: 'h2'
     },
     firstNameInput: {
-      primary: 'input[data-testid="checkout-first-name"]',
+      primary: 'input[data-testid="firstName-input"]',
       fallback: 'input[name="firstName"]'
     },
     lastNameInput: {
-      primary: 'input[data-testid="checkout-last-name"]',
+      primary: 'input[data-testid="lastName-input"]',
       fallback: 'input[name="lastName"]'
     },
     emailInput: {
-      primary: 'input[data-testid="checkout-email"]',
+      primary: 'input[data-testid="email-input"]',
       fallback: 'input[name="email"]'
     },
     phoneInput: {
-      primary: 'input[type="tel"]',
-      fallback: 'input >> nth=3'
+      primary: 'input[data-testid="phone-input"]',
+      fallback: 'input[name="phone"]'
     },
     countrySelector: {
       primary: 'button:has-text("Pakistan")',
       fallback: 'button'
     },
     streetAddressInput: {
-      primary: 'input[data-testid="checkout-address"]',
+      primary: 'input[data-testid="address-input"]',
       fallback: 'input[name="address"]'
     },
     cityInput: {
-      primary: 'input[data-testid="checkout-city"]',
+      primary: 'input[data-testid="city-input"]',
       fallback: 'input[name="city"]'
     },
     zipCodeInput: {
-      primary: 'input[data-testid="checkout-zip"]',
+      primary: 'input[data-testid="zipCode-input"]',
       fallback: 'input[name="zipCode"]'
     },
     paymentHeading: {
@@ -424,19 +424,19 @@ export const locators = {
       fallback: 'h2 >> nth=1'
     },
     cardholderNameInput: {
-      primary: 'input[data-testid="checkout-card-name"]',
+      primary: 'input[data-testid="cardName-input"]',
       fallback: 'input[name="cardName"]'
     },
     cardNumberInput: {
-      primary: 'input[data-testid="checkout-card-number"]',
+      primary: 'input[data-testid="cardNumber-input"]',
       fallback: 'input[name="cardNumber"]'
     },
     expiryInput: {
-      primary: 'input[data-testid="checkout-expiry"]',
+      primary: 'input[data-testid="expiry-input"]',
       fallback: 'input[name="expiry"]'
     },
     cvvInput: {
-      primary: 'input[data-testid="checkout-cvv"]',
+      primary: 'input[data-testid="cvv-input"]',
       fallback: 'input[name="cvv"]'
     },
     orderSummaryHeading: {
