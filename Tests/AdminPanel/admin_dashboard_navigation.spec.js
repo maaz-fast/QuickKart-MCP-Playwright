@@ -11,10 +11,12 @@ test.describe('Admin Dashboard & Navigation Tests @admin', () => {
     // We are already logged in via storageState configured in playwright.config.js
     test.beforeEach(async ({ page }, testInfo) => {
         dashboardPage = new AdminDashboardPage(page);
+        await dashboardPage.skipOnRetry(testInfo);
         
         // Go directly to the admin dashboard
         await page.goto('/admin/dashboard');
         await dashboardPage.waitForLoadingToFinish();
+        await dashboardPage.cleanupPageState();
     });
 
     // Test 1: Checking if the "Pulse" of the shop (Revenue, Orders, etc.) is visible

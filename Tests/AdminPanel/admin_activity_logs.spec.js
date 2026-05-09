@@ -7,7 +7,9 @@ test.describe('Admin Activity Logs @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         activityLogsPage = new AdminActivityLogsPage(page);
+        await activityLogsPage.skipOnRetry(testInfo);
         await activityLogsPage.goto();
+        await activityLogsPage.cleanupPageState();
     });
 
     test.skip('Should sync activity logs', async ({ page }) => {

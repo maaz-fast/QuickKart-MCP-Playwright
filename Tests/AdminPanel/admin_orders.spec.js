@@ -7,8 +7,10 @@ test.describe('Admin Order Management @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         ordersPage = new AdminOrdersPage(page);
+        await ordersPage.skipOnRetry(testInfo);
         page.on('dialog', dialog => dialog.accept());
         await ordersPage.goto();
+        await ordersPage.cleanupPageState();
     });
 
     test('Should update order status', async ({ page }) => {

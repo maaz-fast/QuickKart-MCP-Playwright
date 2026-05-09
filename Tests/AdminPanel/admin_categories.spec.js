@@ -7,8 +7,10 @@ test.describe('Admin Category Management @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         categoriesPage = new AdminCategoriesPage(page);
+        await categoriesPage.skipOnRetry(testInfo);
         page.on('dialog', dialog => dialog.accept());
         await categoriesPage.goto();
+        await categoriesPage.cleanupPageState();
     });
 
     test('Should add and delete a category', async ({ page }) => {

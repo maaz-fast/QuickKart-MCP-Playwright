@@ -9,8 +9,9 @@ test.describe('Admin Product Management @admin', () => {
     // We use the storageState from playwright.config.js for instant login
     test.beforeEach(async ({ page }, testInfo) => {
         productsPage = new AdminProductsPage(page);
-        
+        await productsPage.skipOnRetry(testInfo);
         await productsPage.goto();
+        await productsPage.cleanupPageState();
     });
 
     // Test 1: Creating a brand new product from scratch

@@ -601,6 +601,22 @@ export class BasePage {
       test.skip(true, 'Skipping after initial failure as per pipeline safety policy.');
     }
   }
+
+  /**
+   * Cleanup the page state by closing any open modals or overlays.
+   * Pressing Escape is a reliable way to dismiss most React modals.
+   */
+  async cleanupPageState() {
+    console.log('[CLEANUP] Ensuring page is clean of modals/overlays...');
+    try {
+      await this.page.keyboard.press('Escape');
+      await this.page.waitForSelector('.modal-overlay', { state: 'hidden', timeout: 2000 }).catch(() => {});
+      await this.page.waitForSelector('.modal', { state: 'hidden', timeout: 2000 }).catch(() => {});
+      await this.waitForLoadingToFinish();
+    } catch (e) {
+      console.log('[CLEANUP] Cleanup encountered an issue, proceeding...');
+    }
+  }
 }
 
 export default BasePage;

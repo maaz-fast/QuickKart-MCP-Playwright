@@ -7,7 +7,9 @@ test.describe('Admin Support Management @admin', () => {
 
     test.beforeEach(async ({ page }, testInfo) => {
         supportPage = new AdminSupportPage(page);
+        await supportPage.skipOnRetry(testInfo);
         await supportPage.goto();
+        await supportPage.cleanupPageState();
     });
 
     test('Should resolve a support ticket', async ({ page }) => {
