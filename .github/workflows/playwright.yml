@@ -61,7 +61,9 @@ jobs:
           ref: gh-pages
           path: gh-pages
       - name: Create history folder if not exists
-        run: mkdir -p gh-pages allure-results allure-history
+        run: |
+          mkdir -p gh-pages allure-results allure-history allure-report
+          echo "Initial placeholder for first run" > allure-report/index.html
       - name: Allure Report Action
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -71,12 +73,12 @@ jobs:
           gh_pages: gh-pages
           allure_report: allure-report
           allure_history: allure-history
-          keep_histories: 20
+          keep_reports: 20
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-history
+          publish_dir: allure-report
           publish_branch: gh-pages
           force_orphan: true
