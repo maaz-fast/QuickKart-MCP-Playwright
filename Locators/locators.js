@@ -632,12 +632,15 @@ export const locators = {
         fallback: 'input[type="text"]'
       },
       tableRows: {
-        primary: 'tbody tr',
-        fallback: '.product-list-row'
+        primary: '[data-testid^="admin-product-row-"]',
+        fallback: 'tbody tr'
       },
       productName: '[data-testid="product-name"]',
       productCategory: '[data-testid="product-category"]',
-      productPrice: '[data-testid="product-price"]'
+      productPrice: '[data-testid="product-price"]',
+      editBtn: '[data-testid^="edit-product-"]',
+      deleteBtn: '[data-testid^="delete-product-"]',
+      modalConfirmBtn: '[data-testid="modal-confirm-button"]'
     },
     notifications: {
       heading: {
@@ -673,7 +676,7 @@ export const locators = {
         fallback: '.support-ticket-row'
       },
       resolveBtn: 'button:has-text("Resolve")',
-      statusFilter: 'div:text("Status") + *'
+      statusFilter: '.admin-support-page .custom-select-wrapper .custom-select-header'
     },
     activityLogsPage: {
       syncBtn: {
@@ -684,14 +687,8 @@ export const locators = {
         primary: 'tbody tr',
         fallback: '.activity-log-row'
       },
-      categoryFilter: {
-        primary: '.custom-select-wrapper:has-text("ACTIVITY CATEGORY")',
-        fallback: 'div:text("Activity Category") + *'
-      },
-      levelFilter: {
-        primary: '.custom-select-wrapper:has-text("ACCESS LEVEL")',
-        fallback: 'div:text("Access Level") + *'
-      }
+      categoryFilter: '.admin-logs-page .custom-select-wrapper:has-text("Category") .custom-select-header',
+      levelFilter: '.admin-logs-page .custom-select-wrapper:has-text("Level") .custom-select-header'
     }
   }
 };

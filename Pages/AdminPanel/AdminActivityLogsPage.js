@@ -20,18 +20,16 @@ export class AdminActivityLogsPage extends BasePage {
 
     async filterLogs(category, level) {
         if (category) {
-            const categoryDropdown = this.page.locator(this.locators.categoryFilter.primary).locator('.custom-select-header');
-            await this.click(categoryDropdown, { force: true });
-            await this.page.waitForSelector('.custom-select-options', { state: 'visible', timeout: 5000 });
-            const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(`^${category}$`) });
-            await this.click(option.first(), { force: true });
+            await this.click(this.locators.categoryFilter);
+            await this.page.waitForSelector('.custom-select-options', { state: 'visible' });
+            const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(category, 'i') }).first();
+            await this.click(option);
         }
         if (level) {
-            const levelDropdown = this.page.locator(this.locators.levelFilter.primary).locator('.custom-select-header');
-            await this.click(levelDropdown, { force: true });
-            await this.page.waitForSelector('.custom-select-options', { state: 'visible', timeout: 5000 });
-            const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(`^${level}$`) });
-            await this.click(option.first(), { force: true });
+            await this.click(this.locators.levelFilter);
+            await this.page.waitForSelector('.custom-select-options', { state: 'visible' });
+            const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(level, 'i') }).first();
+            await this.click(option);
         }
         await this.waitForLoadingToFinish();
     }

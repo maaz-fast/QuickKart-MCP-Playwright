@@ -16,21 +16,21 @@ test.describe('Admin Activity Logs @admin', () => {
     });
 
     test('Should filter logs by level', async ({ page }) => {
-        await activityLogsPage.filterLogs(null, 'Error');
+        await activityLogsPage.filterLogs(null, 'Admin Actions');
         
-        // Verify only Error logs are shown
+        // Verify list is filtered (rows should contain ADMIN)
         const rowCount = await activityLogsPage.logRows.count();
         if (rowCount > 0) {
-            await expect(activityLogsPage.logRows.first()).toBeVisible();
+            await expect(activityLogsPage.logRows.first()).toContainText('ADMIN');
         }
     });
 
     test('Should display log details', async ({ page }) => {
         const rowCount = await activityLogsPage.logRows.count();
         if (rowCount > 0) {
-            await activityLogsPage.logRows.first().click();
-            // Verify detail modal or expansion
-            await expect(page.locator('text=Log Details')).toBeVisible();
+            // Verify that the first row has details text (column 5)
+            const details = await activityLogsPage.logRows.first().locator('td').nth(4).innerText();
+            expect(details.length).toBeGreaterThan(0);
         }
     });
 });

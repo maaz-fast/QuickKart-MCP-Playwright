@@ -21,7 +21,8 @@ export class AdminSupportPage extends BasePage {
 
     async filterByStatus(status) {
         // Click custom header filter
-        const filterDropdown = this.page.locator(this.locators.statusFilter).first();
+        const filterWrapper = this.page.locator(this.locators.statusFilter).first();
+        const filterDropdown = filterWrapper.locator('.custom-select-header');
         await this.click(filterDropdown, { force: true });
         await this.page.waitForSelector('.custom-select-options', { state: 'visible', timeout: 5000 });
         const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(`^${status}$`) });

@@ -61,10 +61,19 @@ export class BasePage {
    * Retries on failure
    */
   async click(locator, options = {}) {
-    // If it's a Playwright locator object, use it directly
+    // If it's a Playwright locator object, use it with retry
     if (typeof locator === 'object' && locator.click && !locator.primary) {
       console.log(`[CLICK] Using Playwright locator`);
-      await locator.click(options);
+      for (let i = 0; i < this.retryAttempts; i++) {
+        try {
+          await locator.click(options);
+          return;
+        } catch (error) {
+          console.log(`[CLICK RETRY ${i + 1}/${this.retryAttempts}] Playwright locator click failed...`);
+          if (i === this.retryAttempts - 1) throw error;
+          await this.page.waitForTimeout(500);
+        }
+      }
       return;
     }
 

@@ -32,6 +32,14 @@ export class AdminProductsPage extends BasePage {
         await this.fillProductForm(details);
     }
 
+    async selectCategory(categoryName) {
+        await this.click(this.form.categoryDropdown);
+        await this.page.waitForSelector('.custom-select-options', { state: 'visible' });
+        // Target the option explicitly within the custom-select-options container
+        const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(categoryName, 'i') }).first();
+        await this.click(option);
+    }
+
     async fillProductForm(details) {
         await this.fill(this.form.name, details.name);
         await this.fill(this.form.description, details.description);
@@ -40,13 +48,7 @@ export class AdminProductsPage extends BasePage {
         await this.fill(this.form.image, details.image);
         
         // Handle custom dropdown
-        await this.click(this.form.categoryDropdown);
-        // Wait for the dropdown options container to be visible
-        const optionsContainer = this.page.locator('.custom-select-options');
-        await this.page.waitForSelector('.custom-select-options', { state: 'visible', timeout: 5000 });
-        
-        const option = optionsContainer.locator('.custom-select-option').filter({ hasText: new RegExp(`^${details.category}$`) });
-        await this.click(option.first(), { force: true });
+        await this.selectCategory(details.category);
         
         await this.click(this.form.submitBtn);
         await this.waitForLoadingToFinish();
@@ -57,15 +59,18 @@ export class AdminProductsPage extends BasePage {
     }
 
     async deleteProduct(index = 0) {
-        const row = this.page.locator(this.locators.tableRows.primary).nth(index);
-        const deleteBtn = row.locator('button:has-text("Delete")');
+        const row = this.productRows.nth(index);
+        const deleteBtn = row.locator(this.locators.deleteBtn);
         await this.click(deleteBtn);
+        
+        // Handle confirmation modal
+        await this.click(this.locators.modalConfirmBtn);
         await this.waitForLoadingToFinish();
     }
 
     async clickEditProduct(index = 0) {
         const row = this.page.locator(this.locators.tableRows.primary).nth(index);
-        const editBtn = row.locator('button:has-text("Edit")');
+        const editBtn = row.locator(this.locators.editBtn).first();
         await this.click(editBtn);
     }
 
