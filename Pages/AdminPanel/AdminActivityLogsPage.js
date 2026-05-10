@@ -37,4 +37,11 @@ export class AdminActivityLogsPage extends BasePage {
     async getLatestLog() {
         return await this.getText(this.logRows.first());
     }
+
+    async getTotalLogCount() {
+        const headerText = await this.getText('p:has-text("Tracking")');
+        // Extract number from "Tracking 3049 critical business events"
+        const match = headerText.match(/Tracking\s+(\d+)/i);
+        return match ? parseInt(match[1]) : 0;
+    }
 }

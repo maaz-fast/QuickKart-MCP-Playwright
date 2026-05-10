@@ -26,13 +26,12 @@ test.describe('Admin Product Management @admin', () => {
             image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf'
         };
 
-        const initialCount = await productsPage.getProductCount();
+        const initialCount = await productsPage.getTotalProductCount();
         await productsPage.addNewProduct(productData);
-        await productsPage.fillProductForm(productData);
             
-        // Verify creation by checking if the count increased or the product appears in the list
+        // Verify creation by checking if the total count increased
         await productsPage.goto();
-        const finalCount = await productsPage.getProductCount();
+        const finalCount = await productsPage.getTotalProductCount();
         expect(finalCount).toBe(initialCount + 1);
     });
 
@@ -72,7 +71,7 @@ test.describe('Admin Product Management @admin', () => {
 
     // Test 4: Removing a product from the shop
     test('Should delete a product', async ({ page }) => {
-        const initialCount = await productsPage.getProductCount();
+        const initialCount = await productsPage.getTotalProductCount();
         if (initialCount > 0) {
             // We set up a "listener" to automatically click 'OK' on the browser's delete confirmation popup
             page.on('dialog', dialog => dialog.accept());
@@ -80,9 +79,10 @@ test.describe('Admin Product Management @admin', () => {
             // We click the Delete button on the first product
             await productsPage.deleteProduct(0);
             
-            // We verify that the number of products in the table has decreased by 1
+            // We verify that the total number of products has decreased by 1
+            await productsPage.page.reload(); // Hard reload to be sure
             await productsPage.waitForLoadingToFinish();
-            const finalCount = await productsPage.getProductCount();
+            const finalCount = await productsPage.getTotalProductCount();
             expect(finalCount).toBeLessThan(initialCount);
         }
     });

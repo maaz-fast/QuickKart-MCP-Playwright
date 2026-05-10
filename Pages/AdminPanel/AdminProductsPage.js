@@ -5,6 +5,7 @@ export class AdminProductsPage extends BasePage {
     constructor(page) {
         super(page);
         this.locators = locators.admin.productsPage;
+        this.productRows = page.locator(this.locators.tableRows.primary);
         
         // Form Fields (on /admin/products/add)
         this.form = {
@@ -56,6 +57,15 @@ export class AdminProductsPage extends BasePage {
 
     async getProductCount() {
         return await this.page.locator(this.locators.tableRows.primary).count();
+    }
+
+    async getTotalProductCount() {
+        const locator = 'p:has-text("Manage your store catalog")';
+        await this.page.waitForSelector(locator, { state: 'visible' });
+        const headerText = await this.getText(locator);
+        // Extract number from "(61 items)" or "Manage your store catalog (61 items)"
+        const match = headerText.match(/\((\d+)\s+items\)/);
+        return match ? parseInt(match[1]) : 0;
     }
 
     async deleteProduct(index = 0) {

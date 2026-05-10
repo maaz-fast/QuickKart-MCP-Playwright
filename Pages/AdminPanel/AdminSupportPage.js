@@ -29,4 +29,13 @@ export class AdminSupportPage extends BasePage {
         await this.click(option.first(), { force: true });
         await this.waitForLoadingToFinish();
     }
+
+    async getPendingTicketCount() {
+        const selector = '[data-testid="admin-nav-support"]';
+        await this.page.waitForSelector(selector, { state: 'visible' });
+        const badgeText = await this.getText(selector);
+        // Robust regex to find a number after "Support"
+        const match = badgeText.match(/Support\s*(\d+)/i);
+        return match ? parseInt(match[1]) : 0;
+    }
 }
