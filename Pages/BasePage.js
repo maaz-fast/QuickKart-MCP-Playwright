@@ -6,11 +6,11 @@ import { expect, test } from '@playwright/test';
 import locators from '../Locators/locators.js';
 
 export class BasePage {
-  // Constructor accepts page object from Playwright
+  // Every Page Object (LoginPage, CartPage etc.) extends this class
   constructor(page) {
-    this.page = page;
-    this.timeout = 30000;
-    this.retryAttempts = 2;
+    this.page = page;          // The Playwright browser tab we are controlling
+    this.timeout = 30000;      // Max wait time: 30 seconds before giving up
+    this.retryAttempts = 2;    // How many times to retry a failed click/fill
   }
 
   // ===================== LOCATOR RESOLUTION (MCP HEALING) =====================
@@ -37,19 +37,24 @@ export class BasePage {
    * This implements MCP healing strategy
    */
   async tryLocator(primary, fallback, customTimeout = 10000) {
+    // ── MCP HEALING ENGINE ──────────────────────────────────────────
+    // Step 1: Try the primary selector (usually a data-testid attribute)
     console.log(`[HEALING] Attempting primary selector: ${primary}`);
     try {
+      // Wait up to customTimeout ms for primary selector to appear in DOM
       await this.page.waitForSelector(primary, { timeout: customTimeout });
-      return primary;
+      return primary; // ✅ Primary worked — use it
     } catch (error) {
-      // Primary locator failed, try fallback
+      // ❌ Primary not found — automatically try the fallback selector
       console.log(`[HEALING] Primary selector failed, trying fallback: ${fallback}`);
       try {
+        // Wait for fallback selector (e.g., a plain CSS class or ID)
         await this.page.waitForSelector(fallback, { timeout: customTimeout });
-        return fallback;
+        return fallback; // ✅ Fallback worked — test is "healed" and continues
       } catch (fallbackError) {
+        // ❌ Both failed — nothing we can do, fail the test with a clear message
         console.error(`[HEALING FAILED] Both selectors failed. Primary: ${primary}, Fallback: ${fallback}`);
-        throw fallbackError;
+        throw fallbackError; // Rethrow so Playwright marks the test as failed
       }
     }
   }
@@ -79,15 +84,16 @@ export class BasePage {
 
     const selector = await this.getSelector(locator);
 
+    // Retry loop — tries to click up to retryAttempts (2) times
     for (let i = 0; i < this.retryAttempts; i++) {
       try {
         console.log(`[CLICK] Clicking selector: ${selector}`);
-        await this.page.click(selector, options);
-        return;
+        await this.page.click(selector, options); // Perform the actual click
+        return; // ✅ Click succeeded — exit immediately
       } catch (error) {
         console.log(`[CLICK RETRY ${i + 1}/${this.retryAttempts}] Retrying click...`);
-        if (i === this.retryAttempts - 1) throw error;
-        await this.page.waitForTimeout(500);
+        if (i === this.retryAttempts - 1) throw error; // Last attempt failed — give up
+        await this.page.waitForTimeout(500); // Wait 500ms before trying again
       }
     }
   }
@@ -596,6 +602,10 @@ export class BasePage {
    * while still recording the initial failure.
    */
   async skipOnRetry(testInfo) {
+    // CI SAFETY VALVE: If a test already failed once and Playwright is retrying it,
+    // we SKIP it instead of running it again.
+    // Why? Flaky tests on retry can block the entire GitHub Actions pipeline.
+    // The first failure is already recorded — skipping the retry keeps the build green.
     if (testInfo.retry > 0) {
       console.log(`[CI-SAFETY] Skipping retry of "${testInfo.title}" to prevent pipeline blockage.`);
       test.skip(true, 'Skipping after initial failure as per pipeline safety policy.');
@@ -610,8 +620,8 @@ export class BasePage {
     console.log('[CLEANUP] Ensuring page is clean of modals/overlays...');
     try {
       await this.page.keyboard.press('Escape');
-      await this.page.waitForSelector('.modal-overlay', { state: 'hidden', timeout: 2000 }).catch(() => {});
-      await this.page.waitForSelector('.modal', { state: 'hidden', timeout: 2000 }).catch(() => {});
+      await this.page.waitForSelector('.modal-overlay', { state: 'hidden', timeout: 2000 }).catch(() => { });
+      await this.page.waitForSelector('.modal', { state: 'hidden', timeout: 2000 }).catch(() => { });
       await this.waitForLoadingToFinish();
     } catch (e) {
       console.log('[CLEANUP] Cleanup encountered an issue, proceeding...');
