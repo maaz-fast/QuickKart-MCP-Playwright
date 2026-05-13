@@ -1,0 +1,17 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Asserting all fields are visible
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[ASSERT] Element visible: input[data-testid="name-input"]
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[ASSERT] Element visible: input[data-testid="email-input"]
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[ASSERT] Element visible: input[data-testid="password-input"]
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[ASSERT] Element visible: input[data-testid="confirm-password-input"]
+[SIGNUP PAGE] Verifying heading
+[HEALING] Attempting primary selector: h1:has-text("Create account")
+[ASSERT] Element visible: h1:has-text("Create account")
+[HEALING] Attempting primary selector: h1:has-text("Create account")
+[GET TEXT] From selector: h1:has-text("Create account")
+[SIGNUP PAGE] Heading: Create account
+[TEST PASSED] All signup form fields are visible

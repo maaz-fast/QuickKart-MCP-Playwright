@@ -1,0 +1,14 @@
+[LOGIN PAGE] Navigating to login page
+[LOGIN PAGE] Verifying heading
+[HEALING] Attempting primary selector: h1:has-text("Welcome back")
+[ASSERT] Element visible: h1:has-text("Welcome back")
+[HEALING] Attempting primary selector: h1:has-text("Welcome back")
+[GET TEXT] From selector: h1:has-text("Welcome back")
+[LOGIN PAGE] Heading: Welcome back
+[LOGIN PAGE] Asserting email input is visible
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[ASSERT] Element visible: input[data-testid="email-input"]
+[LOGIN PAGE] Asserting password input is visible
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[ASSERT] Element visible: input[data-testid="password-input"]
+[TEST PASSED] Login page displays heading and fields

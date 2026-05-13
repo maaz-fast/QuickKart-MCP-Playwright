@@ -1,0 +1,26 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Starting signup flow
+[SIGNUP PAGE] Filling full name: Test User
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[FILL] Filling selector "input[data-testid="name-input"]" with: "Test User"
+[SIGNUP PAGE] Filling email: prod-test1778683194559@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "prod-test1778683194559@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Clicking signup button
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[CLICK] Clicking selector: button[data-testid="signup-button"]
+[SIGNUP PAGE] Signup completed
+[HOME PAGE] Navigating to home page
+[HEALING] Attempting primary selector: button[data-testid="next-page-button"]
+[SCROLL] To element: button[data-testid="next-page-button"]
+[VISIBILITY] Selector button[data-testid="next-page-button"]: true
+[HOME PAGE] Clicking next page
+[HEALING] Attempting primary selector: button[data-testid="next-page-button"]
+[CLICK] Clicking selector: button[data-testid="next-page-button"]
+[TEST PASSED] Pagination next page works

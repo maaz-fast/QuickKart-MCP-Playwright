@@ -1,0 +1,12 @@
+[WAIT] Waiting for loaders to finish...
+[CLEANUP] Ensuring page is clean of modals/overlays...
+[WAIT] Waiting for loaders to finish...
+[GET TEXT] From selector: p:has-text("Manage your store catalog")
+[HEALING] Attempting primary selector: [data-testid="add-product-button"]
+[CLICK] Clicking selector: [data-testid="add-product-button"]
+[FILL] Filling selector "[data-testid="product-name-input"]" with: "Pro Gaming Mouse 1778683409548"
+[FILL] Filling selector "[data-testid="product-description-input"]" with: "Ultra high precision gaming mouse with RGB."
+[FILL] Filling selector "[data-testid="product-price-input"]" with: "85.99"
+[FILL] Filling selector "[data-testid="product-stock-input"]" with: "50"
+[FILL] Filling selector "[data-testid="product-image-input"]" with: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf"
+[CLICK] Clicking selector: [data-testid="category-dropdown-header"]

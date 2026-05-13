@@ -1,0 +1,57 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Starting signup flow
+[SIGNUP PAGE] Filling full name: Forgot User
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[FILL] Filling selector "input[data-testid="name-input"]" with: "Forgot User"
+[SIGNUP PAGE] Filling email: forgot-test1778682905735@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "forgot-test1778682905735@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Clicking signup button
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[CLICK] Clicking selector: button[data-testid="signup-button"]
+[SIGNUP PAGE] Signup completed
+[HOME PAGE] Logging out
+[HEALING] Attempting primary selector: button[data-testid="logout-button"]
+[CLICK] Clicking selector: button[data-testid="logout-button"]
+[FORGOT PASSWORD PAGE] Navigating to forgot password page
+[FORGOT PASSWORD PAGE] Starting verify flow
+[FORGOT PASSWORD PAGE] Filling email: forgot-test1778682905735@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "forgot-test1778682905735@test.com"
+[FORGOT PASSWORD PAGE] Clicking verify email button
+[HEALING] Attempting primary selector: button[data-testid="forgot-password-submit-button"]
+[CLICK] Clicking selector: button[data-testid="forgot-password-submit-button"]
+[RESET PASSWORD PAGE] Checking if page is visible
+[VISIBILITY] Selector h1:has-text("Reset password"): true
+[RESET PASSWORD PAGE] Starting reset flow
+[RESET PASSWORD PAGE] Filling new password
+[HEALING] Attempting primary selector: input[placeholder="Min. 6 characters"]
+[FILL] Filling selector "input[placeholder="Min. 6 characters"]" with: "NewSecurePass123!"
+[RESET PASSWORD PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[placeholder="Repeat new password"]
+[FILL] Filling selector "input[placeholder="Repeat new password"]" with: "NewSecurePass123!"
+[RESET PASSWORD PAGE] Clicking reset button
+[HEALING] Attempting primary selector: button:has-text("Reset Password")
+[CLICK] Clicking selector: button:has-text("Reset Password")
+[LOGIN PAGE] Checking if login page is visible
+[VISIBILITY] Selector h1:has-text("Welcome back"): true
+[LOGIN PAGE] Logging in with email: forgot-test1778682905735@test.com
+[LOGIN PAGE] Filling email: forgot-test1778682905735@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "forgot-test1778682905735@test.com"
+[LOGIN PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "NewSecurePass123!"
+[LOGIN PAGE] Clicking login button
+[HEALING] Attempting primary selector: button[data-testid="login-button"]
+[CLICK] Clicking selector: button[data-testid="login-button"]
+[LOGIN PAGE] Login completed
+[HEALING] Attempting primary selector: h1[data-testid="home-page-title"]
+[ASSERT] Element visible: h1[data-testid="home-page-title"]
+[TEST PASSED] Full forgot password reset flow completed

@@ -1,0 +1,343 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: AdminPanel/admin_products.spec.js >> Admin Product Management @admin >> Should edit a product successfully
+- Location: Tests/AdminPanel/admin_products.spec.js:48:9
+
+# Error details
+
+```
+TypeError: Cannot read properties of undefined (reading 'first')
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - region "Notifications Alt+T"
+  - navigation [ref=e4]:
+    - link "QuickKart" [ref=e6] [cursor=pointer]:
+      - /url: /
+      - img [ref=e7]
+      - text: QuickKart
+    - generic [ref=e9]:
+      - link "Home" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img [ref=e11]
+        - text: Home
+      - link "Admin Panel" [ref=e14] [cursor=pointer]:
+        - /url: /admin/dashboard
+        - img [ref=e15]
+        - text: Admin Panel
+      - generic [ref=e17]:
+        - button "Notifications" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+          - generic [ref=e23]: 99+
+        - button [ref=e24] [cursor=pointer]:
+          - img [ref=e25]
+        - link "Maaz" [ref=e27] [cursor=pointer]:
+          - /url: /profile
+          - img [ref=e28]
+          - generic [ref=e31]: Maaz
+        - button "Logout" [ref=e32] [cursor=pointer]
+  - main [ref=e33]:
+    - generic [ref=e34]:
+      - complementary [ref=e35]:
+        - generic [ref=e36]:
+          - img [ref=e38]
+          - heading "Admin Portal" [level=3] [ref=e40]
+        - navigation [ref=e41]:
+          - link "Dashboard" [ref=e42] [cursor=pointer]:
+            - /url: /admin/dashboard
+            - img [ref=e43]
+            - text: Dashboard
+          - link "Products" [ref=e48] [cursor=pointer]:
+            - /url: /admin/products
+            - img [ref=e49]
+            - text: Products
+          - link "Categories" [ref=e53] [cursor=pointer]:
+            - /url: /admin/categories
+            - img [ref=e54]
+            - text: Categories
+          - link "Global Orders" [ref=e55] [cursor=pointer]:
+            - /url: /admin/orders
+            - img [ref=e56]
+            - text: Global Orders
+          - link "Users" [ref=e60] [cursor=pointer]:
+            - /url: /admin/users
+            - img [ref=e61]
+            - text: Users
+          - link "Support 21" [ref=e66] [cursor=pointer]:
+            - /url: /admin/support
+            - img [ref=e67]
+            - text: Support
+            - generic [ref=e69]: "21"
+          - link "Activity Logs" [ref=e70] [cursor=pointer]:
+            - /url: /admin/activity-logs
+            - img [ref=e71]
+            - text: Activity Logs
+        - link "Back to Store" [ref=e75] [cursor=pointer]:
+          - /url: /
+          - img [ref=e76]
+          - text: Back to Store
+      - main [ref=e78]:
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - heading "Products" [level=1] [ref=e83]
+              - paragraph [ref=e84]: Manage your store catalog (58 items)
+            - link "+ Add Product" [ref=e85] [cursor=pointer]:
+              - /url: /admin/products/add
+          - generic [ref=e86]:
+            - table [ref=e88]:
+              - rowgroup [ref=e89]:
+                - row "Image Name Category Price Stock Actions" [ref=e90]:
+                  - columnheader "Image" [ref=e91]
+                  - columnheader "Name" [ref=e92]
+                  - columnheader "Category" [ref=e93]
+                  - columnheader "Price" [ref=e94]
+                  - columnheader "Stock" [ref=e95]
+                  - columnheader "Actions" [ref=e96]
+              - rowgroup [ref=e97]:
+                - row "Pro Gaming Mouse 1778336207017 Pro Gaming Mouse 1778336207017 Electronics $175.50 49 units Edit Delete" [ref=e98]:
+                  - cell "Pro Gaming Mouse 1778336207017" [ref=e99]:
+                    - img "Pro Gaming Mouse 1778336207017" [ref=e100]
+                  - cell "Pro Gaming Mouse 1778336207017" [ref=e101]:
+                    - strong [ref=e102]: Pro Gaming Mouse 1778336207017
+                  - cell "Electronics" [ref=e103]
+                  - cell "$175.50" [ref=e104]
+                  - cell "49 units" [ref=e105]:
+                    - generic [ref=e106]: 49 units
+                  - cell "Edit Delete" [ref=e107]:
+                    - generic [ref=e108]:
+                      - button "Edit" [ref=e109] [cursor=pointer]
+                      - button "Delete" [ref=e110] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778336184395 Pro Gaming Mouse 1778336184395 Electronics $85.99 50 units Edit Delete" [ref=e111]:
+                  - cell "Pro Gaming Mouse 1778336184395" [ref=e112]:
+                    - img "Pro Gaming Mouse 1778336184395" [ref=e113]
+                  - cell "Pro Gaming Mouse 1778336184395" [ref=e114]:
+                    - strong [ref=e115]: Pro Gaming Mouse 1778336184395
+                  - cell "Electronics" [ref=e116]
+                  - cell "$85.99" [ref=e117]
+                  - cell "50 units" [ref=e118]:
+                    - generic [ref=e119]: 50 units
+                  - cell "Edit Delete" [ref=e120]:
+                    - generic [ref=e121]:
+                      - button "Edit" [ref=e122] [cursor=pointer]
+                      - button "Delete" [ref=e123] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778336161914 Pro Gaming Mouse 1778336161914 Electronics $85.99 50 units Edit Delete" [ref=e124]:
+                  - cell "Pro Gaming Mouse 1778336161914" [ref=e125]:
+                    - img "Pro Gaming Mouse 1778336161914" [ref=e126]
+                  - cell "Pro Gaming Mouse 1778336161914" [ref=e127]:
+                    - strong [ref=e128]: Pro Gaming Mouse 1778336161914
+                  - cell "Electronics" [ref=e129]
+                  - cell "$85.99" [ref=e130]
+                  - cell "50 units" [ref=e131]:
+                    - generic [ref=e132]: 50 units
+                  - cell "Edit Delete" [ref=e133]:
+                    - generic [ref=e134]:
+                      - button "Edit" [ref=e135] [cursor=pointer]
+                      - button "Delete" [ref=e136] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778334964348 Pro Gaming Mouse 1778334964348 Electronics $175.50 50 units Edit Delete" [ref=e137]:
+                  - cell "Pro Gaming Mouse 1778334964348" [ref=e138]:
+                    - img "Pro Gaming Mouse 1778334964348" [ref=e139]
+                  - cell "Pro Gaming Mouse 1778334964348" [ref=e140]:
+                    - strong [ref=e141]: Pro Gaming Mouse 1778334964348
+                  - cell "Electronics" [ref=e142]
+                  - cell "$175.50" [ref=e143]
+                  - cell "50 units" [ref=e144]:
+                    - generic [ref=e145]: 50 units
+                  - cell "Edit Delete" [ref=e146]:
+                    - generic [ref=e147]:
+                      - button "Edit" [ref=e148] [cursor=pointer]
+                      - button "Delete" [ref=e149] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778334942354 Pro Gaming Mouse 1778334942354 Electronics $175.50 50 units Edit Delete" [ref=e150]:
+                  - cell "Pro Gaming Mouse 1778334942354" [ref=e151]:
+                    - img "Pro Gaming Mouse 1778334942354" [ref=e152]
+                  - cell "Pro Gaming Mouse 1778334942354" [ref=e153]:
+                    - strong [ref=e154]: Pro Gaming Mouse 1778334942354
+                  - cell "Electronics" [ref=e155]
+                  - cell "$175.50" [ref=e156]
+                  - cell "50 units" [ref=e157]:
+                    - generic [ref=e158]: 50 units
+                  - cell "Edit Delete" [ref=e159]:
+                    - generic [ref=e160]:
+                      - button "Edit" [ref=e161] [cursor=pointer]
+                      - button "Delete" [ref=e162] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778334920209 Pro Gaming Mouse 1778334920209 Electronics $175.50 50 units Edit Delete" [ref=e163]:
+                  - cell "Pro Gaming Mouse 1778334920209" [ref=e164]:
+                    - img "Pro Gaming Mouse 1778334920209" [ref=e165]
+                  - cell "Pro Gaming Mouse 1778334920209" [ref=e166]:
+                    - strong [ref=e167]: Pro Gaming Mouse 1778334920209
+                  - cell "Electronics" [ref=e168]
+                  - cell "$175.50" [ref=e169]
+                  - cell "50 units" [ref=e170]:
+                    - generic [ref=e171]: 50 units
+                  - cell "Edit Delete" [ref=e172]:
+                    - generic [ref=e173]:
+                      - button "Edit" [ref=e174] [cursor=pointer]
+                      - button "Delete" [ref=e175] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778334920201 Pro Gaming Mouse 1778334920201 Electronics $85.99 50 units Edit Delete" [ref=e176]:
+                  - cell "Pro Gaming Mouse 1778334920201" [ref=e177]:
+                    - img "Pro Gaming Mouse 1778334920201" [ref=e178]
+                  - cell "Pro Gaming Mouse 1778334920201" [ref=e179]:
+                    - strong [ref=e180]: Pro Gaming Mouse 1778334920201
+                  - cell "Electronics" [ref=e181]
+                  - cell "$85.99" [ref=e182]
+                  - cell "50 units" [ref=e183]:
+                    - generic [ref=e184]: 50 units
+                  - cell "Edit Delete" [ref=e185]:
+                    - generic [ref=e186]:
+                      - button "Edit" [ref=e187] [cursor=pointer]
+                      - button "Delete" [ref=e188] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778334899802 Pro Gaming Mouse 1778334899802 Electronics $175.50 50 units Edit Delete" [ref=e189]:
+                  - cell "Pro Gaming Mouse 1778334899802" [ref=e190]:
+                    - img "Pro Gaming Mouse 1778334899802" [ref=e191]
+                  - cell "Pro Gaming Mouse 1778334899802" [ref=e192]:
+                    - strong [ref=e193]: Pro Gaming Mouse 1778334899802
+                  - cell "Electronics" [ref=e194]
+                  - cell "$175.50" [ref=e195]
+                  - cell "50 units" [ref=e196]:
+                    - generic [ref=e197]: 50 units
+                  - cell "Edit Delete" [ref=e198]:
+                    - generic [ref=e199]:
+                      - button "Edit" [ref=e200] [cursor=pointer]
+                      - button "Delete" [ref=e201] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778334898719 Pro Gaming Mouse 1778334898719 Electronics $85.99 50 units Edit Delete" [ref=e202]:
+                  - cell "Pro Gaming Mouse 1778334898719" [ref=e203]:
+                    - img "Pro Gaming Mouse 1778334898719" [ref=e204]
+                  - cell "Pro Gaming Mouse 1778334898719" [ref=e205]:
+                    - strong [ref=e206]: Pro Gaming Mouse 1778334898719
+                  - cell "Electronics" [ref=e207]
+                  - cell "$85.99" [ref=e208]
+                  - cell "50 units" [ref=e209]:
+                    - generic [ref=e210]: 50 units
+                  - cell "Edit Delete" [ref=e211]:
+                    - generic [ref=e212]:
+                      - button "Edit" [ref=e213] [cursor=pointer]
+                      - button "Delete" [ref=e214] [cursor=pointer]
+                - row "Pro Gaming Mouse 1778334880082 Pro Gaming Mouse 1778334880082 Electronics $85.99 50 units Edit Delete" [ref=e215]:
+                  - cell "Pro Gaming Mouse 1778334880082" [ref=e216]:
+                    - img "Pro Gaming Mouse 1778334880082" [ref=e217]
+                  - cell "Pro Gaming Mouse 1778334880082" [ref=e218]:
+                    - strong [ref=e219]: Pro Gaming Mouse 1778334880082
+                  - cell "Electronics" [ref=e220]
+                  - cell "$85.99" [ref=e221]
+                  - cell "50 units" [ref=e222]:
+                    - generic [ref=e223]: 50 units
+                  - cell "Edit Delete" [ref=e224]:
+                    - generic [ref=e225]:
+                      - button "Edit" [ref=e226] [cursor=pointer]
+                      - button "Delete" [ref=e227] [cursor=pointer]
+            - generic [ref=e228]:
+              - button "← Prev" [disabled] [ref=e229]
+              - generic [ref=e230]:
+                - button "1" [ref=e231] [cursor=pointer]
+                - button "2" [ref=e232] [cursor=pointer]
+                - button "3" [ref=e233] [cursor=pointer]
+                - button "4" [ref=e234] [cursor=pointer]
+                - button "5" [ref=e235] [cursor=pointer]
+                - button "6" [ref=e236] [cursor=pointer]
+              - button "Next →" [ref=e237] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test';
+  2  | import { LoginPage } from '../../Pages/LoginPage';
+  3  | import { AdminProductsPage } from '../../Pages/AdminPanel/AdminProductsPage';
+  4  | 
+  5  | // This suite tests the "Life Cycle" of a product: Creation, Search, Editing, and Deletion
+  6  | test.describe('Admin Product Management @admin', () => {
+  7  |     let productsPage;
+  8  | 
+  9  |     // We use the storageState from playwright.config.js for instant login
+  10 |     test.beforeEach(async ({ page }, testInfo) => {
+  11 |         productsPage = new AdminProductsPage(page);
+  12 |         await productsPage.skipOnRetry(testInfo);
+  13 |         await productsPage.goto();
+  14 |         await productsPage.cleanupPageState();
+  15 |     });
+  16 | 
+  17 |     // Test 1: Creating a brand new product from scratch
+  18 |     test('Should create a new product successfully', async ({ page }) => {
+  19 |         // ... (data setup) ...
+  20 |         const productData = {
+  21 |             name: 'Pro Gaming Mouse ' + Date.now(),
+  22 |             description: 'Ultra high precision gaming mouse with RGB.',
+  23 |             price: '85.99',
+  24 |             stock: '50',
+  25 |             category: 'Electronics',
+  26 |             image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf'
+  27 |         };
+  28 | 
+  29 |         const initialCount = await productsPage.getTotalProductCount();
+  30 |         await productsPage.addNewProduct(productData);
+  31 |             
+  32 |         // Verify creation by checking if the total count increased
+  33 |         await productsPage.goto();
+  34 |         const finalCount = await productsPage.getTotalProductCount();
+  35 |         expect(finalCount).toBe(initialCount + 1);
+  36 |     });
+  37 | 
+  38 |     // Test 2: Making sure we can find our products using the search bar
+  39 |     test('Should search for a product', async ({ page }) => {
+  40 |         // We type "Mouse" into the search box
+  41 |         await productsPage.searchProduct('Mouse');
+  42 |         // We check if the table actually filtered down to show at least one matching item
+  43 |         const count = await productsPage.getProductCount();
+  44 |         expect(count).toBeGreaterThan(0);
+  45 |     });
+  46 | 
+  47 |     // Test 3: Updating an existing product (changing its price)
+  48 |     test('Should edit a product successfully', async ({ page }) => {
+  49 |         // First, we check if there are any products available to edit
+  50 |         const rowCount = await productsPage.getProductCount();
+  51 |         if (rowCount > 0) {
+  52 |             const newPrice = '175.50';
+  53 |             
+  54 |             // We click "Edit" on the very first product in the list
+  55 |             await productsPage.clickEditProduct(0);
+  56 |             // We verify the browser navigated to the Edit URL
+  57 |             await expect(page).toHaveURL(/.*\/edit\/.*/);
+  58 |             
+  59 |             // We change the price and click the "Update" button
+  60 |             await productsPage.updateProductPrice(newPrice);
+  61 |             
+  62 |             // We expect to be back on the products list
+  63 |             await productsPage.goto();
+  64 |             await productsPage.waitForLoadingToFinish();
+  65 |             
+  66 |             // Finally, we verify that the price in the table actually shows the new value
+> 67 |             const updatedPrice = await productsPage.tableRows.first().locator('[data-testid="product-price"]').innerText();
+     |                                                               ^ TypeError: Cannot read properties of undefined (reading 'first')
+  68 |             expect(updatedPrice).toContain(newPrice);
+  69 |         }
+  70 |     });
+  71 | 
+  72 |     // Test 4: Removing a product from the shop
+  73 |     test('Should delete a product', async ({ page }) => {
+  74 |         const initialCount = await productsPage.getTotalProductCount();
+  75 |         if (initialCount > 0) {
+  76 |             // We set up a "listener" to automatically click 'OK' on the browser's delete confirmation popup
+  77 |             page.on('dialog', dialog => dialog.accept());
+  78 |             
+  79 |             // We click the Delete button on the first product
+  80 |             await productsPage.deleteProduct(0);
+  81 |             
+  82 |             // We verify that the total number of products has decreased by 1
+  83 |             await productsPage.page.reload(); // Hard reload to be sure
+  84 |             await productsPage.waitForLoadingToFinish();
+  85 |             const finalCount = await productsPage.getTotalProductCount();
+  86 |             expect(finalCount).toBeLessThan(initialCount);
+  87 |         }
+  88 |     });
+  89 | });
+  90 | 
+```

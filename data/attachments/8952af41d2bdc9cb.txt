@@ -1,0 +1,14 @@
+[LOGIN PAGE] Navigating to login page
+[LOGIN PAGE] Filling email: test@example.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "test@example.com"
+[LOGIN PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "password123"
+[LOGIN PAGE] Getting email value
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[GET VALUE] From: input[data-testid="email-input"]
+[LOGIN PAGE] Getting password value
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[GET VALUE] From: input[data-testid="password-input"]
+[TEST PASSED] Email and password fields accept input

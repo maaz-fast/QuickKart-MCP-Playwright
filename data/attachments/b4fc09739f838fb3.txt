@@ -1,0 +1,240 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: AdminPanel/admin_products.spec.js >> Admin Product Management @admin >> Should create a new product successfully
+- Location: Tests/AdminPanel/admin_products.spec.js:18:9
+
+# Error details
+
+```
+Test timeout of 60000ms exceeded.
+```
+
+```
+Error: page.waitForSelector: Test timeout of 60000ms exceeded.
+Call log:
+  - waiting for locator('.custom-select-options') to be visible
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - region "Notifications Alt+T"
+  - navigation [ref=e4]:
+    - link "QuickKart" [ref=e6] [cursor=pointer]:
+      - /url: /
+      - img [ref=e7]
+      - text: QuickKart
+    - generic [ref=e9]:
+      - link "Home" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img [ref=e11]
+        - text: Home
+      - link "Admin Panel" [ref=e14] [cursor=pointer]:
+        - /url: /admin/dashboard
+        - img [ref=e15]
+        - text: Admin Panel
+      - generic [ref=e17]:
+        - button "Notifications" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+          - generic [ref=e23]: 99+
+        - button [ref=e24] [cursor=pointer]:
+          - img [ref=e25]
+        - link "Maaz" [ref=e27] [cursor=pointer]:
+          - /url: /profile
+          - img [ref=e28]
+          - generic [ref=e31]: Maaz
+        - button "Logout" [ref=e32] [cursor=pointer]
+  - main [ref=e33]:
+    - generic [ref=e34]:
+      - complementary [ref=e35]:
+        - generic [ref=e36]:
+          - img [ref=e38]
+          - heading "Admin Portal" [level=3] [ref=e40]
+        - navigation [ref=e41]:
+          - link "Dashboard" [ref=e42] [cursor=pointer]:
+            - /url: /admin/dashboard
+            - img [ref=e43]
+            - text: Dashboard
+          - link "Products" [ref=e48] [cursor=pointer]:
+            - /url: /admin/products
+            - img [ref=e49]
+            - text: Products
+          - link "Categories" [ref=e53] [cursor=pointer]:
+            - /url: /admin/categories
+            - img [ref=e54]
+            - text: Categories
+          - link "Global Orders" [ref=e55] [cursor=pointer]:
+            - /url: /admin/orders
+            - img [ref=e56]
+            - text: Global Orders
+          - link "Users" [ref=e60] [cursor=pointer]:
+            - /url: /admin/users
+            - img [ref=e61]
+            - text: Users
+          - link "Support 21" [ref=e66] [cursor=pointer]:
+            - /url: /admin/support
+            - img [ref=e67]
+            - text: Support
+            - generic [ref=e69]: "21"
+          - link "Activity Logs" [ref=e70] [cursor=pointer]:
+            - /url: /admin/activity-logs
+            - img [ref=e71]
+            - text: Activity Logs
+        - link "Back to Store" [ref=e75] [cursor=pointer]:
+          - /url: /
+          - img [ref=e76]
+          - text: Back to Store
+      - main [ref=e78]:
+        - generic [ref=e80]:
+          - link "← Back to Products" [ref=e82] [cursor=pointer]:
+            - /url: /admin/products
+          - generic [ref=e83]:
+            - heading "Add New Product" [level=1] [ref=e84]
+            - paragraph [ref=e85]: Create a new item in your catalog
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - generic [ref=e89]: Product Name
+              - textbox "Product Name" [ref=e90]:
+                - /placeholder: e.g. Wireless Headphones
+                - text: Pro Gaming Mouse 1778683409548
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - generic [ref=e93]: Price ($)
+                - spinbutton "Price ($)" [ref=e94]: "85.99"
+              - generic [ref=e95]:
+                - generic [ref=e96]: Stock Quantity
+                - spinbutton "Stock Quantity" [ref=e97]: "50"
+            - generic [ref=e98]:
+              - generic [ref=e99]: Category
+              - generic [ref=e101] [cursor=pointer]:
+                - generic [ref=e102]: Select a Category
+                - img [ref=e103]
+            - generic [ref=e105]:
+              - generic [ref=e106]: Image URL
+              - textbox "Image URL" [ref=e107]:
+                - /placeholder: https://images.unsplash.com/...
+                - text: https://images.unsplash.com/photo-1527443224154-c4a3942d3acf
+              - generic [ref=e108]:
+                - paragraph [ref=e109]: "Preview:"
+                - img "Preview" [ref=e110]
+            - generic [ref=e111]:
+              - generic [ref=e112]: Description
+              - textbox "Description" [ref=e113]:
+                - /placeholder: Enter product details...
+                - text: Ultra high precision gaming mouse with RGB.
+            - button "Create Product" [ref=e115] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1   | import BasePage from '../BasePage.js';
+  2   | import locators from '../../Locators/locators.js';
+  3   | 
+  4   | export class AdminProductsPage extends BasePage {
+  5   |     constructor(page) {
+  6   |         super(page);
+  7   |         this.locators = locators.admin.productsPage;
+  8   |         this.productRows = page.locator(this.locators.tableRows.primary);
+  9   |         
+  10  |         // Form Fields (on /admin/products/add)
+  11  |         this.form = {
+  12  |             name: '[data-testid="product-name-input"]',
+  13  |             description: '[data-testid="product-description-input"]',
+  14  |             price: '[data-testid="product-price-input"]',
+  15  |             stock: '[data-testid="product-stock-input"]',
+  16  |             categoryDropdown: '[data-testid="category-dropdown-header"]',
+  17  |             image: '[data-testid="product-image-input"]',
+  18  |             submitBtn: '[data-testid="submit-button"]'
+  19  |         };
+  20  |     }
+  21  | 
+  22  |     async goto() {
+  23  |         await this.page.goto('/admin/products');
+  24  |         await this.waitForLoadingToFinish();
+  25  |     }
+  26  | 
+  27  |     async clickAddProduct() {
+  28  |         await this.click(this.locators.addProductBtn);
+  29  |     }
+  30  | 
+  31  |     async addNewProduct(details) {
+  32  |         await this.clickAddProduct();
+  33  |         await this.fillProductForm(details);
+  34  |     }
+  35  | 
+  36  |     async selectCategory(categoryName) {
+  37  |         await this.click(this.form.categoryDropdown);
+> 38  |         await this.page.waitForSelector('.custom-select-options', { state: 'visible' });
+      |                         ^ Error: page.waitForSelector: Test timeout of 60000ms exceeded.
+  39  |         // Target the option explicitly within the custom-select-options container
+  40  |         const option = this.page.locator('.custom-select-options .custom-select-option').filter({ hasText: new RegExp(categoryName, 'i') }).first();
+  41  |         await this.click(option);
+  42  |     }
+  43  | 
+  44  |     async fillProductForm(details) {
+  45  |         await this.fill(this.form.name, details.name);
+  46  |         await this.fill(this.form.description, details.description);
+  47  |         await this.fill(this.form.price, details.price);
+  48  |         await this.fill(this.form.stock, details.stock);
+  49  |         await this.fill(this.form.image, details.image);
+  50  |         
+  51  |         // Handle custom dropdown
+  52  |         await this.selectCategory(details.category);
+  53  |         
+  54  |         await this.click(this.form.submitBtn);
+  55  |         await this.waitForLoadingToFinish();
+  56  |     }
+  57  | 
+  58  |     async getProductCount() {
+  59  |         return await this.page.locator(this.locators.tableRows.primary).count();
+  60  |     }
+  61  | 
+  62  |     async getTotalProductCount() {
+  63  |         const locator = 'p:has-text("Manage your store catalog")';
+  64  |         await this.page.waitForSelector(locator, { state: 'visible' });
+  65  |         const headerText = await this.getText(locator);
+  66  |         // Extract number from "(61 items)" or "Manage your store catalog (61 items)"
+  67  |         const match = headerText.match(/\((\d+)\s+items\)/);
+  68  |         return match ? parseInt(match[1]) : 0;
+  69  |     }
+  70  | 
+  71  |     async deleteProduct(index = 0) {
+  72  |         const row = this.productRows.nth(index);
+  73  |         const deleteBtn = row.locator(this.locators.deleteBtn);
+  74  |         await this.click(deleteBtn);
+  75  |         
+  76  |         // Handle confirmation modal
+  77  |         await this.click(this.locators.modalConfirmBtn);
+  78  |         await this.waitForLoadingToFinish();
+  79  |     }
+  80  | 
+  81  |     async clickEditProduct(index = 0) {
+  82  |         const row = this.page.locator(this.locators.tableRows.primary).nth(index);
+  83  |         const editBtn = row.locator(this.locators.editBtn).first();
+  84  |         await this.click(editBtn);
+  85  |     }
+  86  | 
+  87  |     async updateProductPrice(newPrice) {
+  88  |         await this.fill(this.form.price, newPrice);
+  89  |         await this.click(this.form.submitBtn);
+  90  |         await this.waitForLoadingToFinish();
+  91  |     }
+  92  | 
+  93  |     async searchProduct(name) {
+  94  |         const searchBar = this.page.locator('input[placeholder*="Search"]');
+  95  |         if (await this.isVisible(searchBar)) {
+  96  |             await this.fill(searchBar, name);
+  97  |         }
+  98  |     }
+  99  | }
+  100 | 
+```

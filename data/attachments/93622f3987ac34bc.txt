@@ -1,0 +1,435 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: AdminPanel/admin_support.spec.js >> Admin Support Management @admin >> Should resolve a support ticket
+- Location: Tests/AdminPanel/admin_support.spec.js:15:9
+
+# Error details
+
+```
+Test timeout of 60000ms exceeded.
+```
+
+```
+Error: page.waitForTimeout: Target page, context or browser has been closed
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - region "Notifications Alt+T"
+  - navigation [ref=e4]:
+    - link "QuickKart" [ref=e6] [cursor=pointer]:
+      - /url: /
+      - img [ref=e7]
+      - text: QuickKart
+    - generic [ref=e9]:
+      - link "Home" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img [ref=e11]
+        - text: Home
+      - link "Admin Panel" [ref=e14] [cursor=pointer]:
+        - /url: /admin/dashboard
+        - img [ref=e15]
+        - text: Admin Panel
+      - generic [ref=e17]:
+        - button "Notifications" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+          - generic [ref=e23]: 99+
+        - button [ref=e24] [cursor=pointer]:
+          - img [ref=e25]
+        - link "Maaz" [ref=e27] [cursor=pointer]:
+          - /url: /profile
+          - img [ref=e28]
+          - generic [ref=e31]: Maaz
+        - button "Logout" [ref=e32] [cursor=pointer]
+  - main [ref=e33]:
+    - generic [ref=e34]:
+      - complementary [ref=e35]:
+        - generic [ref=e36]:
+          - img [ref=e38]
+          - heading "Admin Portal" [level=3] [ref=e40]
+        - navigation [ref=e41]:
+          - link "Dashboard" [ref=e42] [cursor=pointer]:
+            - /url: /admin/dashboard
+            - img [ref=e43]
+            - text: Dashboard
+          - link "Products" [ref=e48] [cursor=pointer]:
+            - /url: /admin/products
+            - img [ref=e49]
+            - text: Products
+          - link "Categories" [ref=e53] [cursor=pointer]:
+            - /url: /admin/categories
+            - img [ref=e54]
+            - text: Categories
+          - link "Global Orders" [ref=e55] [cursor=pointer]:
+            - /url: /admin/orders
+            - img [ref=e56]
+            - text: Global Orders
+          - link "Users" [ref=e60] [cursor=pointer]:
+            - /url: /admin/users
+            - img [ref=e61]
+            - text: Users
+          - link "Support 21" [ref=e66] [cursor=pointer]:
+            - /url: /admin/support
+            - img [ref=e67]
+            - text: Support
+            - generic [ref=e69]: "21"
+          - link "Activity Logs" [ref=e70] [cursor=pointer]:
+            - /url: /admin/activity-logs
+            - img [ref=e71]
+            - text: Activity Logs
+        - link "Back to Store" [ref=e75] [cursor=pointer]:
+          - /url: /
+          - img [ref=e76]
+          - text: Back to Store
+      - main [ref=e78]:
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - heading "Customer Support" [level=1] [ref=e83]
+              - paragraph [ref=e84]: Manage user queries and feedback
+            - generic [ref=e87] [cursor=pointer]:
+              - generic [ref=e88]: All Status
+              - img [ref=e89]
+          - generic [ref=e91]:
+            - table [ref=e93]:
+              - rowgroup [ref=e94]:
+                - row "Date User Subject Message Status Actions" [ref=e95]:
+                  - columnheader "Date" [ref=e96]
+                  - columnheader "User" [ref=e97]
+                  - columnheader "Subject" [ref=e98]
+                  - columnheader "Message" [ref=e99]
+                  - columnheader "Status" [ref=e100]
+                  - columnheader "Actions" [ref=e101]
+              - rowgroup [ref=e102]:
+                - row "5/13/2026 Test User test@example.com Support Request This is an automated test message for contact form. Pending Resolve" [ref=e103]:
+                  - cell "5/13/2026" [ref=e104]
+                  - cell "Test User test@example.com" [ref=e105]:
+                    - generic [ref=e106]:
+                      - strong [ref=e107]: Test User
+                      - generic [ref=e108]: test@example.com
+                  - cell "Support Request" [ref=e109]:
+                    - strong [ref=e110]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e111]:
+                    - paragraph [ref=e112]: This is an automated test message for contact form.
+                  - cell "Pending" [ref=e113]
+                  - cell "Resolve" [ref=e114]:
+                    - button "Resolve" [ref=e115] [cursor=pointer]
+                - row "5/10/2026 Test User test@example.com Support Request This is an automated test message for contact form. Pending Resolve" [ref=e116]:
+                  - cell "5/10/2026" [ref=e117]
+                  - cell "Test User test@example.com" [ref=e118]:
+                    - generic [ref=e119]:
+                      - strong [ref=e120]: Test User
+                      - generic [ref=e121]: test@example.com
+                  - cell "Support Request" [ref=e122]:
+                    - strong [ref=e123]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e124]:
+                    - paragraph [ref=e125]: This is an automated test message for contact form.
+                  - cell "Pending" [ref=e126]
+                  - cell "Resolve" [ref=e127]:
+                    - button "Resolve" [ref=e128] [cursor=pointer]
+                - row "5/10/2026 Test User test@example.com Support Request This is an automated test message for contact form. Pending Resolve" [ref=e129]:
+                  - cell "5/10/2026" [ref=e130]
+                  - cell "Test User test@example.com" [ref=e131]:
+                    - generic [ref=e132]:
+                      - strong [ref=e133]: Test User
+                      - generic [ref=e134]: test@example.com
+                  - cell "Support Request" [ref=e135]:
+                    - strong [ref=e136]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e137]:
+                    - paragraph [ref=e138]: This is an automated test message for contact form.
+                  - cell "Pending" [ref=e139]
+                  - cell "Resolve" [ref=e140]:
+                    - button "Resolve" [ref=e141] [cursor=pointer]
+                - row "5/9/2026 Test User test@example.com Support Request This is an automated test message for contact form. Resolved Undo" [ref=e142]:
+                  - cell "5/9/2026" [ref=e143]
+                  - cell "Test User test@example.com" [ref=e144]:
+                    - generic [ref=e145]:
+                      - strong [ref=e146]: Test User
+                      - generic [ref=e147]: test@example.com
+                  - cell "Support Request" [ref=e148]:
+                    - strong [ref=e149]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e150]:
+                    - paragraph [ref=e151]: This is an automated test message for contact form.
+                  - cell "Resolved" [ref=e152]
+                  - cell "Undo" [ref=e153]:
+                    - button "Undo" [ref=e154] [cursor=pointer]
+                - row "5/9/2026 Test User test@example.com Support Request This is an automated test message for contact form. Pending Resolve" [ref=e155]:
+                  - cell "5/9/2026" [ref=e156]
+                  - cell "Test User test@example.com" [ref=e157]:
+                    - generic [ref=e158]:
+                      - strong [ref=e159]: Test User
+                      - generic [ref=e160]: test@example.com
+                  - cell "Support Request" [ref=e161]:
+                    - strong [ref=e162]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e163]:
+                    - paragraph [ref=e164]: This is an automated test message for contact form.
+                  - cell "Pending" [ref=e165]
+                  - cell "Resolve" [ref=e166]:
+                    - button "Resolve" [ref=e167] [cursor=pointer]
+                - row "5/9/2026 Test User test@example.com Support Request This is an automated test message for contact form. Pending Resolve" [ref=e168]:
+                  - cell "5/9/2026" [ref=e169]
+                  - cell "Test User test@example.com" [ref=e170]:
+                    - generic [ref=e171]:
+                      - strong [ref=e172]: Test User
+                      - generic [ref=e173]: test@example.com
+                  - cell "Support Request" [ref=e174]:
+                    - strong [ref=e175]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e176]:
+                    - paragraph [ref=e177]: This is an automated test message for contact form.
+                  - cell "Pending" [ref=e178]
+                  - cell "Resolve" [ref=e179]:
+                    - button "Resolve" [ref=e180] [cursor=pointer]
+                - row "5/9/2026 Test User test@example.com Support Request This is an automated test message for contact form. Pending Resolve" [ref=e181]:
+                  - cell "5/9/2026" [ref=e182]
+                  - cell "Test User test@example.com" [ref=e183]:
+                    - generic [ref=e184]:
+                      - strong [ref=e185]: Test User
+                      - generic [ref=e186]: test@example.com
+                  - cell "Support Request" [ref=e187]:
+                    - strong [ref=e188]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e189]:
+                    - paragraph [ref=e190]: This is an automated test message for contact form.
+                  - cell "Pending" [ref=e191]
+                  - cell "Resolve" [ref=e192]:
+                    - button "Resolve" [ref=e193] [cursor=pointer]
+                - row "5/9/2026 Test User test@example.com Support Request This is an automated test message for contact form. Pending Resolve" [ref=e194]:
+                  - cell "5/9/2026" [ref=e195]
+                  - cell "Test User test@example.com" [ref=e196]:
+                    - generic [ref=e197]:
+                      - strong [ref=e198]: Test User
+                      - generic [ref=e199]: test@example.com
+                  - cell "Support Request" [ref=e200]:
+                    - strong [ref=e201]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e202]:
+                    - paragraph [ref=e203]: This is an automated test message for contact form.
+                  - cell "Pending" [ref=e204]
+                  - cell "Resolve" [ref=e205]:
+                    - button "Resolve" [ref=e206] [cursor=pointer]
+                - row "5/9/2026 Test User test@example.com Support Request This is an automated test message for contact form. Resolved Undo" [ref=e207]:
+                  - cell "5/9/2026" [ref=e208]
+                  - cell "Test User test@example.com" [ref=e209]:
+                    - generic [ref=e210]:
+                      - strong [ref=e211]: Test User
+                      - generic [ref=e212]: test@example.com
+                  - cell "Support Request" [ref=e213]:
+                    - strong [ref=e214]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e215]:
+                    - paragraph [ref=e216]: This is an automated test message for contact form.
+                  - cell "Resolved" [ref=e217]
+                  - cell "Undo" [ref=e218]:
+                    - button "Undo" [ref=e219] [cursor=pointer]
+                - row "5/9/2026 Test User test@example.com Support Request This is an automated test message for contact form. Resolved Undo" [ref=e220]:
+                  - cell "5/9/2026" [ref=e221]
+                  - cell "Test User test@example.com" [ref=e222]:
+                    - generic [ref=e223]:
+                      - strong [ref=e224]: Test User
+                      - generic [ref=e225]: test@example.com
+                  - cell "Support Request" [ref=e226]:
+                    - strong [ref=e227]: Support Request
+                  - cell "This is an automated test message for contact form." [ref=e228]:
+                    - paragraph [ref=e229]: This is an automated test message for contact form.
+                  - cell "Resolved" [ref=e230]
+                  - cell "Undo" [ref=e231]:
+                    - button "Undo" [ref=e232] [cursor=pointer]
+            - generic [ref=e234]:
+              - button "← Prev" [disabled] [ref=e235]
+              - generic [ref=e236]:
+                - button "1" [ref=e237] [cursor=pointer]
+                - button "2" [ref=e238] [cursor=pointer]
+                - button "3" [ref=e239] [cursor=pointer]
+                - button "4" [ref=e240] [cursor=pointer]
+              - button "Next →" [ref=e241] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1   | // BasePage - Reusable base class with MCP healing support
+  2   | // All page objects extend this class
+  3   | // Includes retry logic with primary and fallback locators
+  4   | 
+  5   | import { expect, test } from '@playwright/test';
+  6   | import locators from '../Locators/locators.js';
+  7   | 
+  8   | export class BasePage {
+  9   |   // Every Page Object (LoginPage, CartPage etc.) extends this class
+  10  |   constructor(page) {
+  11  |     this.page = page;          // The Playwright browser tab we are controlling
+  12  |     this.timeout = 30000;      // Max wait time: 30 seconds before giving up
+  13  |     this.retryAttempts = 2;    // How many times to retry a failed click/fill
+  14  |   }
+  15  | 
+  16  |   // ===================== LOCATOR RESOLUTION (MCP HEALING) =====================
+  17  | 
+  18  |   /**
+  19  |    * Resolve a locator from the locators file
+  20  |    * Tries primary first, then fallback if primary fails
+  21  |    * This is the MCP healing mechanism
+  22  |    */
+  23  |   async resolveLocator(locatorPath) {
+  24  |     // Split path like "loginPage.emailInput" to get nested value
+  25  |     const parts = locatorPath.split('.');
+  26  |     let locator = locators;
+  27  | 
+  28  |     for (const part of parts) {
+  29  |       locator = locator[part];
+  30  |     }
+  31  | 
+  32  |     return locator;
+  33  |   }
+  34  | 
+  35  |   /**
+  36  |    * Try primary locator, fallback to alternative if fails
+  37  |    * This implements MCP healing strategy
+  38  |    */
+  39  |   async tryLocator(primary, fallback, customTimeout = 10000) {
+  40  |     // ── MCP HEALING ENGINE ──────────────────────────────────────────
+  41  |     // Step 1: Try the primary selector (usually a data-testid attribute)
+  42  |     console.log(`[HEALING] Attempting primary selector: ${primary}`);
+  43  |     try {
+  44  |       // Wait up to customTimeout ms for primary selector to appear in DOM
+  45  |       await this.page.waitForSelector(primary, { timeout: customTimeout });
+  46  |       return primary; // ✅ Primary worked — use it
+  47  |     } catch (error) {
+  48  |       // ❌ Primary not found — automatically try the fallback selector
+  49  |       console.log(`[HEALING] Primary selector failed, trying fallback: ${fallback}`);
+  50  |       try {
+  51  |         // Wait for fallback selector (e.g., a plain CSS class or ID)
+  52  |         await this.page.waitForSelector(fallback, { timeout: customTimeout });
+  53  |         return fallback; // ✅ Fallback worked — test is "healed" and continues
+  54  |       } catch (fallbackError) {
+  55  |         // ❌ Both failed — nothing we can do, fail the test with a clear message
+  56  |         console.error(`[HEALING FAILED] Both selectors failed. Primary: ${primary}, Fallback: ${fallback}`);
+  57  |         throw fallbackError; // Rethrow so Playwright marks the test as failed
+  58  |       }
+  59  |     }
+  60  |   }
+  61  | 
+  62  |   // ===================== CLICK ACTIONS =====================
+  63  | 
+  64  |   /**
+  65  |    * Click an element using primary/fallback locators or a Playwright locator
+  66  |    * Retries on failure
+  67  |    */
+  68  |   async click(locator, options = {}) {
+  69  |     // If it's a Playwright locator object, use it with retry
+  70  |     if (typeof locator === 'object' && locator.click && !locator.primary) {
+  71  |       console.log(`[CLICK] Using Playwright locator`);
+  72  |       for (let i = 0; i < this.retryAttempts; i++) {
+  73  |         try {
+  74  |           await locator.click(options);
+  75  |           return;
+  76  |         } catch (error) {
+  77  |           console.log(`[CLICK RETRY ${i + 1}/${this.retryAttempts}] Playwright locator click failed...`);
+  78  |           if (i === this.retryAttempts - 1) throw error;
+> 79  |           await this.page.waitForTimeout(500);
+      |                           ^ Error: page.waitForTimeout: Target page, context or browser has been closed
+  80  |         }
+  81  |       }
+  82  |       return;
+  83  |     }
+  84  | 
+  85  |     const selector = await this.getSelector(locator);
+  86  | 
+  87  |     // Retry loop — tries to click up to retryAttempts (2) times
+  88  |     for (let i = 0; i < this.retryAttempts; i++) {
+  89  |       try {
+  90  |         console.log(`[CLICK] Clicking selector: ${selector}`);
+  91  |         await this.page.click(selector, options); // Perform the actual click
+  92  |         return; // ✅ Click succeeded — exit immediately
+  93  |       } catch (error) {
+  94  |         console.log(`[CLICK RETRY ${i + 1}/${this.retryAttempts}] Retrying click...`);
+  95  |         if (i === this.retryAttempts - 1) throw error; // Last attempt failed — give up
+  96  |         await this.page.waitForTimeout(500); // Wait 500ms before trying again
+  97  |       }
+  98  |     }
+  99  |   }
+  100 | 
+  101 |   /**
+  102 |    * Safely get a selector with healing logic
+  103 |    */
+  104 |   async getSelector(locator, timeout) {
+  105 |     if (typeof locator === 'string') {
+  106 |       return locator; // Direct string selector
+  107 |     }
+  108 | 
+  109 |     // Locator object with primary and fallback
+  110 |     return await this.tryLocator(locator.primary, locator.fallback, timeout);
+  111 |   }
+  112 | 
+  113 |   // ===================== TEXT INPUT ACTIONS =====================
+  114 | 
+  115 |   /**
+  116 |    * Fill an input field
+  117 |    * Clears existing text first
+  118 |    */
+  119 |   async fill(selector, text) {
+  120 |     // If it's a Playwright locator object, use it directly
+  121 |     if (typeof selector === 'object' && selector.fill && !selector.primary) {
+  122 |       console.log(`[FILL] Using Playwright locator for "${text}"`);
+  123 |       await selector.fill(text);
+  124 |       return;
+  125 |     }
+  126 | 
+  127 |     const resolvedSelector = await this.getSelector(selector);
+  128 | 
+  129 |     for (let i = 0; i < this.retryAttempts; i++) {
+  130 |       try {
+  131 |         console.log(`[FILL] Filling selector "${resolvedSelector}" with: "${text}"`);
+  132 |         await this.page.fill(resolvedSelector, text);
+  133 |         return;
+  134 |       } catch (error) {
+  135 |         console.log(`[FILL RETRY ${i + 1}/${this.retryAttempts}] Retrying fill...`);
+  136 |         if (i === this.retryAttempts - 1) throw error;
+  137 |         await this.page.waitForTimeout(500);
+  138 |       }
+  139 |     }
+  140 |   }
+  141 | 
+  142 |   /**
+  143 |    * Type text into an input (character by character)
+  144 |    * Useful for fields with character-by-character validation
+  145 |    */
+  146 |   async type(selector, text, options = {}) {
+  147 |     const resolvedSelector = await this.getSelector(selector);
+  148 | 
+  149 |     console.log(`[TYPE] Typing into "${resolvedSelector}": "${text}"`);
+  150 |     await this.page.click(resolvedSelector);
+  151 |     await this.page.type(resolvedSelector, text, options);
+  152 |   }
+  153 | 
+  154 |   /**
+  155 |    * Clear input field
+  156 |    */
+  157 |   async clear(selector) {
+  158 |     const resolvedSelector = await this.getSelector(selector);
+  159 | 
+  160 |     console.log(`[CLEAR] Clearing field: ${resolvedSelector}`);
+  161 |     await this.page.fill(resolvedSelector, '');
+  162 |   }
+  163 | 
+  164 |   // ===================== WAIT ACTIONS =====================
+  165 | 
+  166 |   /**
+  167 |    * Wait for element to be visible
+  168 |    */
+  169 |   async waitForElement(selector, timeout = this.timeout) {
+  170 |     const resolvedSelector = await this.getSelector(selector);
+  171 | 
+  172 |     console.log(`[WAIT] Waiting for element: ${resolvedSelector}`);
+  173 |     await this.page.waitForSelector(resolvedSelector, { timeout });
+  174 |   }
+  175 | 
+  176 |   /**
+  177 |    * Wait for navigation to complete
+  178 |    */
+  179 |   async waitForNavigation(options = {}) {
+```

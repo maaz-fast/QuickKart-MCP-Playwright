@@ -1,0 +1,2 @@
+[LOGIN PAGE] Navigating to login page
+[TEST PASSED] QuickKart logo navigation works

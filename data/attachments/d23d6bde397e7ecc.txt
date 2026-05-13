@@ -1,0 +1,14 @@
+[LOGIN PAGE] Navigating to login page
+[LOGIN PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[LOGIN PAGE] Checking if password is visible
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[GET ATTR] type from: input[data-testid="password-input"]
+[LOGIN PAGE] Toggling show password
+[HEALING] Attempting primary selector: button[aria-label="Show password"]
+[CLICK] Clicking selector: button[aria-label="Show password"]
+[LOGIN PAGE] Checking if password is visible
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[GET ATTR] type from: input[data-testid="password-input"]
+[TEST PASSED] Login password visibility toggle works

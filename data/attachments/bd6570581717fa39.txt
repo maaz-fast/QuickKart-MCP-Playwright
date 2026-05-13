@@ -1,0 +1,1 @@
+[CI-SAFETY] Skipping retry of "Should create a new product successfully" to prevent pipeline blockage.

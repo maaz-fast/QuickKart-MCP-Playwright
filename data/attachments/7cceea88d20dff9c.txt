@@ -1,0 +1,1 @@
+[CI-SAFETY] Skipping retry of "Should filter tickets by status" to prevent pipeline blockage.

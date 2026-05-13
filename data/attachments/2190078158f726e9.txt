@@ -1,0 +1,4 @@
+[CONTACT PAGE] Navigating to contact page
+[CONTACT PAGE] Clicking send message button
+[HEALING] Attempting primary selector: button.btn-primary:has-text("Send Message")
+[CLICK] Clicking selector: button.btn-primary:has-text("Send Message")

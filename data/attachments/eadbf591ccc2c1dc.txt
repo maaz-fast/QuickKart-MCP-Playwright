@@ -1,0 +1,8 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Toggling show password
+[HEALING] Attempting primary selector: button[aria-label="Show password"]
+[CLICK] Clicking selector: button[aria-label="Show password"]
+[TEST PASSED] Password visibility toggle works

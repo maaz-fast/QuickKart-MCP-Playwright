@@ -1,0 +1,7 @@
+[LOGIN PAGE] Navigating to login page
+[LOGIN PAGE] Clicking create account link
+[HEALING] Attempting primary selector: a:has-text("Create one")
+[CLICK] Clicking selector: a:has-text("Create one")
+[SIGNUP PAGE] Checking if signup page is visible
+[VISIBILITY] Selector h1:has-text("Create account"): true
+[TEST PASSED] Create account link navigates to signup

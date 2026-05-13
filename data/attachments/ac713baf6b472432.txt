@@ -1,0 +1,81 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Starting signup flow
+[SIGNUP PAGE] Filling full name: Test User
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[FILL] Filling selector "input[data-testid="name-input"]" with: "Test User"
+[SIGNUP PAGE] Filling email: checkout-test1778683095006@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "checkout-test1778683095006@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Clicking signup button
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[CLICK] Clicking selector: button[data-testid="signup-button"]
+[SIGNUP PAGE] Signup completed
+[HOME PAGE] Navigating to home page
+[HOME PAGE] Clicking first product
+[HOME PAGE] Getting first product card
+[PRODUCT PAGE] Adding product to cart (qty: 1)
+[PRODUCT PAGE] Setting quantity to 1
+[PRODUCT PAGE] Getting quantity
+[HEALING] Attempting primary selector: span[data-testid="quantity-display"]
+[GET TEXT] From selector: span[data-testid="quantity-display"]
+[PRODUCT PAGE] Clicking add to cart button
+[HEALING] Attempting primary selector: button[data-testid="add-to-cart-button"]
+[CLICK] Clicking selector: button[data-testid="add-to-cart-button"]
+[SLEEP] Waiting 1000ms...
+[CART PAGE] Navigating to cart page
+[WAIT] Waiting for loaders to finish...
+[CART PAGE] Proceeding to checkout
+[HEALING] Attempting primary selector: button[data-testid="checkout-button"]
+[CLICK] Clicking selector: button[data-testid="checkout-button"]
+[CHECKOUT PAGE] Filling shipping information
+[CHECKOUT PAGE] Filling first name: John
+[HEALING] Attempting primary selector: input[data-testid="firstName-input"]
+[FILL] Filling selector "input[data-testid="firstName-input"]" with: "John"
+[CHECKOUT PAGE] Filling last name: Doe
+[HEALING] Attempting primary selector: input[data-testid="lastName-input"]
+[FILL] Filling selector "input[data-testid="lastName-input"]" with: "Doe"
+[CHECKOUT PAGE] Filling email: john@example.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "john@example.com"
+[CHECKOUT PAGE] Filling phone: 1234567890
+[HEALING] Attempting primary selector: input[data-testid="phone-input"]
+[FILL] Filling selector "input[data-testid="phone-input"]" with: "1234567890"
+[CHECKOUT PAGE] Filling street address: 123 Street
+[HEALING] Attempting primary selector: input[data-testid="address-input"]
+[FILL] Filling selector "input[data-testid="address-input"]" with: "123 Street"
+[CHECKOUT PAGE] Filling city: Karachi
+[HEALING] Attempting primary selector: input[data-testid="city-input"]
+[FILL] Filling selector "input[data-testid="city-input"]" with: "Karachi"
+[CHECKOUT PAGE] Filling zip code: 54000
+[HEALING] Attempting primary selector: input[data-testid="zipCode-input"]
+[FILL] Filling selector "input[data-testid="zipCode-input"]" with: "54000"
+[CHECKOUT PAGE] Filling payment information
+[CHECKOUT PAGE] Filling cardholder name: John Doe
+[HEALING] Attempting primary selector: input[data-testid="cardName-input"]
+[FILL] Filling selector "input[data-testid="cardName-input"]" with: "John Doe"
+[CHECKOUT PAGE] Filling card number
+[HEALING] Attempting primary selector: input[data-testid="cardNumber-input"]
+[FILL] Filling selector "input[data-testid="cardNumber-input"]" with: "4111111111111111"
+[CHECKOUT PAGE] Filling expiry: 12/30
+[HEALING] Attempting primary selector: input[data-testid="expiry-input"]
+[FILL] Filling selector "input[data-testid="expiry-input"]" with: "12/30"
+[CHECKOUT PAGE] Filling CVV
+[HEALING] Attempting primary selector: input[data-testid="cvv-input"]
+[FILL] Filling selector "input[data-testid="cvv-input"]" with: "123"
+[CHECKOUT PAGE] Clicking place order button
+[HEALING] Attempting primary selector: button[data-testid="place-order-button"]
+[HEALING] Primary selector failed, trying fallback: button:has-text("Place Order")
+[CLICK] Clicking selector: button:has-text("Place Order")
+[CHECKOUT PAGE] Waiting for success screen
+[WAIT] Waiting for URL: /orders
+[ORDERS PAGE] Checking if orders page is visible
+[VISIBILITY] Selector h1[data-testid="orders-page-title"]: true
+[ORDERS PAGE] Checking if there are no orders
+[VISIBILITY] Element not found or not visible within 2000ms
+[TEST PASSED] Full checkout flow completed successfully

@@ -1,0 +1,11 @@
+[WAIT] Waiting for loaders to finish...
+[CLEANUP] Ensuring page is clean of modals/overlays...
+[WAIT] Waiting for loaders to finish...
+[HEALING] Attempting primary selector: [data-testid="stat-revenue"] h2
+[GET TEXT] From selector: [data-testid="stat-revenue"] h2
+[HEALING] Attempting primary selector: [data-testid="stat-orders"] h2
+[GET TEXT] From selector: [data-testid="stat-orders"] h2
+[HEALING] Attempting primary selector: [data-testid="stat-products"] h2
+[GET TEXT] From selector: [data-testid="stat-products"] h2
+[HEALING] Attempting primary selector: [data-testid="stat-users"] h2
+[GET TEXT] From selector: [data-testid="stat-users"] h2

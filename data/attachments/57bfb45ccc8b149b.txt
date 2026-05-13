@@ -1,0 +1,39 @@
+[VISIBILITY] Element not found or not visible within 2000ms
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Starting signup flow
+[SIGNUP PAGE] Filling full name: Test User
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[FILL] Filling selector "input[data-testid="name-input"]" with: "Test User"
+[SIGNUP PAGE] Filling email: duplicate-1778682874807@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "duplicate-1778682874807@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Clicking signup button
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[CLICK] Clicking selector: button[data-testid="signup-button"]
+[SIGNUP PAGE] Signup completed
+[HOME PAGE] Logging out
+[HEALING] Attempting primary selector: button[data-testid="logout-button"]
+[CLICK] Clicking selector: button[data-testid="logout-button"]
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Filling full name: Test User
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[FILL] Filling selector "input[data-testid="name-input"]" with: "Test User"
+[SIGNUP PAGE] Filling email: duplicate-1778682874807@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "duplicate-1778682874807@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Clicking signup button
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[CLICK] Clicking selector: button[data-testid="signup-button"]
+[TEST PASSED] Signup prevented for existing email

@@ -1,0 +1,2 @@
+[LOGIN PAGE] Navigating to login page
+[TEST PASSED] Contact link works from login page

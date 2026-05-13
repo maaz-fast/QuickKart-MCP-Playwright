@@ -1,0 +1,11 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Filling email: test1778682869635@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "test1778682869635@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[TEST PASSED] Form validation prevents empty full name

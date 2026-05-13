@@ -1,0 +1,1 @@
+[CI-SAFETY] Skipping retry of "Should edit a product successfully" to prevent pipeline blockage.

@@ -1,0 +1,15 @@
+[SETUP] Starting Admin authentication...
+[LOGIN PAGE] Navigating to login page
+[LOGIN PAGE] Logging in with email: maaz+admin@gmail.com
+[LOGIN PAGE] Filling email: maaz+admin@gmail.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "maaz+admin@gmail.com"
+[LOGIN PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "123456"
+[LOGIN PAGE] Clicking login button
+[HEALING] Attempting primary selector: button[data-testid="login-button"]
+[CLICK] Clicking selector: button[data-testid="login-button"]
+[LOGIN PAGE] Login completed
+[SETUP] Admin authenticated successfully
+[SETUP] Auth state saved to: /home/runner/work/QuickKart-MCP-Playwright/QuickKart-MCP-Playwright/.auth/admin.json

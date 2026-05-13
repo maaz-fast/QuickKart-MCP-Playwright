@@ -1,0 +1,9 @@
+[WAIT] Waiting for loaders to finish...
+[CLEANUP] Ensuring page is clean of modals/overlays...
+[WAIT] Waiting for loaders to finish...
+[HEALING] Attempting primary selector: button[data-testid="notification-icon"]
+[CLICK] Clicking selector: button[data-testid="notification-icon"]
+[HEALING] Attempting primary selector: a:has-text("View All Notifications")
+[WAIT] Waiting for element: a:has-text("View All Notifications")
+[HEALING] Attempting primary selector: a:has-text("View All Notifications")
+[CLICK] Clicking selector: a:has-text("View All Notifications")

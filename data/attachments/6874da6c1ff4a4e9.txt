@@ -1,0 +1,10 @@
+[FORGOT PASSWORD PAGE] Navigating to forgot password page
+[FORGOT PASSWORD PAGE] Verifying heading
+[HEALING] Attempting primary selector: h1:has-text("Forgot password?")
+[ASSERT] Element visible: h1:has-text("Forgot password?")
+[HEALING] Attempting primary selector: h1:has-text("Forgot password?")
+[GET TEXT] From selector: h1:has-text("Forgot password?")
+[FORGOT PASSWORD PAGE] Asserting email input is visible
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[ASSERT] Element visible: input[data-testid="email-input"]
+[TEST PASSED] Forgot password page loads successfully

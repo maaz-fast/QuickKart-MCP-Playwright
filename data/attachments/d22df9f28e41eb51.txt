@@ -1,0 +1,8 @@
+[FORGOT PASSWORD PAGE] Navigating to forgot password page
+[FORGOT PASSWORD PAGE] Filling email: test@example.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "test@example.com"
+[FORGOT PASSWORD PAGE] Getting email value
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[GET VALUE] From: input[data-testid="email-input"]
+[TEST PASSED] Forgot password email input accepts text

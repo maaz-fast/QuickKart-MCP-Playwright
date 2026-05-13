@@ -1,0 +1,60 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Starting signup flow
+[SIGNUP PAGE] Filling full name: Test User
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[FILL] Filling selector "input[data-testid="name-input"]" with: "Test User"
+[SIGNUP PAGE] Filling email: checkout-test1778683084586@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "checkout-test1778683084586@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Clicking signup button
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[CLICK] Clicking selector: button[data-testid="signup-button"]
+[SIGNUP PAGE] Signup completed
+[HOME PAGE] Navigating to home page
+[HOME PAGE] Clicking first product
+[HOME PAGE] Getting first product card
+[PRODUCT PAGE] Adding product to cart (qty: 1)
+[PRODUCT PAGE] Setting quantity to 1
+[PRODUCT PAGE] Getting quantity
+[HEALING] Attempting primary selector: span[data-testid="quantity-display"]
+[GET TEXT] From selector: span[data-testid="quantity-display"]
+[PRODUCT PAGE] Clicking add to cart button
+[HEALING] Attempting primary selector: button[data-testid="add-to-cart-button"]
+[CLICK] Clicking selector: button[data-testid="add-to-cart-button"]
+[SLEEP] Waiting 1000ms...
+[CART PAGE] Navigating to cart page
+[WAIT] Waiting for loaders to finish...
+[CART PAGE] Proceeding to checkout
+[HEALING] Attempting primary selector: button[data-testid="checkout-button"]
+[CLICK] Clicking selector: button[data-testid="checkout-button"]
+[CHECKOUT PAGE] Filling shipping information
+[CHECKOUT PAGE] Filling first name: Test
+[HEALING] Attempting primary selector: input[data-testid="firstName-input"]
+[FILL] Filling selector "input[data-testid="firstName-input"]" with: "Test"
+[CHECKOUT PAGE] Filling last name: User
+[HEALING] Attempting primary selector: input[data-testid="lastName-input"]
+[FILL] Filling selector "input[data-testid="lastName-input"]" with: "User"
+[CHECKOUT PAGE] Filling email: test@example.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "test@example.com"
+[CHECKOUT PAGE] Filling phone: 1234567890
+[HEALING] Attempting primary selector: input[data-testid="phone-input"]
+[FILL] Filling selector "input[data-testid="phone-input"]" with: "1234567890"
+[CHECKOUT PAGE] Filling street address: 123 Test Lane
+[HEALING] Attempting primary selector: input[data-testid="address-input"]
+[FILL] Filling selector "input[data-testid="address-input"]" with: "123 Test Lane"
+[CHECKOUT PAGE] Filling city: Test City
+[HEALING] Attempting primary selector: input[data-testid="city-input"]
+[FILL] Filling selector "input[data-testid="city-input"]" with: "Test City"
+[CHECKOUT PAGE] Filling zip code: 12345
+[HEALING] Attempting primary selector: input[data-testid="zipCode-input"]
+[FILL] Filling selector "input[data-testid="zipCode-input"]" with: "12345"
+[HEALING] Attempting primary selector: input[data-testid="firstName-input"]
+[GET VALUE] From: input[data-testid="firstName-input"]
+[TEST PASSED] Shipping information filled correctly

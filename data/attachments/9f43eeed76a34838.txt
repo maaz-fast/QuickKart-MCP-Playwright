@@ -1,0 +1,7 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Clicking sign in link
+[HEALING] Attempting primary selector: a:has-text("Sign in")
+[CLICK] Clicking selector: a:has-text("Sign in")
+[LOGIN PAGE] Checking if login page is visible
+[VISIBILITY] Selector h1:has-text("Welcome back"): true
+[TEST PASSED] Sign in link navigates to login page

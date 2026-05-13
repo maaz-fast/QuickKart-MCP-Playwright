@@ -1,0 +1,38 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Starting signup flow
+[SIGNUP PAGE] Filling full name: Test User
+[HEALING] Attempting primary selector: input[data-testid="name-input"]
+[FILL] Filling selector "input[data-testid="name-input"]" with: "Test User"
+[SIGNUP PAGE] Filling email: cart-test1778682962436@test.com
+[HEALING] Attempting primary selector: input[data-testid="email-input"]
+[FILL] Filling selector "input[data-testid="email-input"]" with: "cart-test1778682962436@test.com"
+[SIGNUP PAGE] Filling password
+[HEALING] Attempting primary selector: input[data-testid="password-input"]
+[FILL] Filling selector "input[data-testid="password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Filling confirm password
+[HEALING] Attempting primary selector: input[data-testid="confirm-password-input"]
+[FILL] Filling selector "input[data-testid="confirm-password-input"]" with: "TestPass123!"
+[SIGNUP PAGE] Clicking signup button
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[CLICK] Clicking selector: button[data-testid="signup-button"]
+[SIGNUP PAGE] Signup completed
+[HOME PAGE] Navigating to home page
+[HOME PAGE] Clicking first product
+[HOME PAGE] Getting first product card
+[PRODUCT PAGE] Adding product to cart (qty: 1)
+[PRODUCT PAGE] Setting quantity to 1
+[PRODUCT PAGE] Getting quantity
+[HEALING] Attempting primary selector: span[data-testid="quantity-display"]
+[GET TEXT] From selector: span[data-testid="quantity-display"]
+[PRODUCT PAGE] Clicking add to cart button
+[HEALING] Attempting primary selector: button[data-testid="add-to-cart-button"]
+[CLICK] Clicking selector: button[data-testid="add-to-cart-button"]
+[SLEEP] Waiting 1000ms...
+[CART PAGE] Navigating to cart page
+[WAIT] Waiting for loaders to finish...
+[CART PAGE] Proceeding to checkout
+[HEALING] Attempting primary selector: button[data-testid="checkout-button"]
+[CLICK] Clicking selector: button[data-testid="checkout-button"]
+[CHECKOUT PAGE] Checking if checkout page is visible
+[VISIBILITY] Selector h1[data-testid="checkout-page-title"]: true
+[TEST PASSED] Proceed to checkout navigates to checkout page

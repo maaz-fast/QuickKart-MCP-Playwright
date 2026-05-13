@@ -1,0 +1,1 @@
+[CI-SAFETY] Skipping retry of "Should delete a product" to prevent pipeline blockage.

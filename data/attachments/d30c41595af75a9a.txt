@@ -1,0 +1,7 @@
+[FORGOT PASSWORD PAGE] Navigating to forgot password page
+[FORGOT PASSWORD PAGE] Clicking back to login link
+[HEALING] Attempting primary selector: a:has-text("Back to Login")
+[CLICK] Clicking selector: a:has-text("Back to Login")
+[LOGIN PAGE] Checking if login page is visible
+[VISIBILITY] Selector h1:has-text("Welcome back"): true
+[TEST PASSED] Back to login link works

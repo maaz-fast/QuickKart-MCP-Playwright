@@ -1,0 +1,1 @@
+[CI-SAFETY] Skipping retry of "Should resolve a support ticket" to prevent pipeline blockage.

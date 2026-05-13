@@ -1,0 +1,5 @@
+[SIGNUP PAGE] Navigating to signup page
+[SIGNUP PAGE] Asserting signup button is enabled
+[HEALING] Attempting primary selector: button[data-testid="signup-button"]
+[ASSERT] Element enabled: button[data-testid="signup-button"]
+[TEST PASSED] Signup button is enabled
